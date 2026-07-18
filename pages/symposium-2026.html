@@ -92,6 +92,8 @@
                 -webkit-overflow-scrolling: touch;
             }
             .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links::before,
+            .nav-links::after { content: ""; flex: 0 0 calc(50vw - 2rem); }
             .nav-links li { flex: 0 0 auto; }
             .nav-links a { font-size: 0.74rem; }
             .event-hero { padding: 104px 1.1rem 36px; }
