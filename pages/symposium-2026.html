@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 2nd NUS Symposium on T&amp;I Evaluation | M3T&amp;I + X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.18s; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            line-height: 1.75;
+            background: #fafafa;
+        }
+        a { color: #7c3aed; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 54px;
+            background: rgba(13, 8, 32, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-name { font-size: 1.05rem; font-weight: 600; color: #fff; }
+        .nav-links { display: flex; gap: 1.35rem; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
+        .nav-links a:hover { color: #fff; text-decoration: none; }
+        .nav-links a.active { color: #c4b5fd; }
+
+        .event-hero {
+            background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%);
+            padding: 98px 2.5rem 50px;
+            text-align: center;
+        }
+        .event-hero-inner { max-width: 920px; margin: 0 auto; }
+        .event-kicker { color: #c4b5fd; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.8rem; }
+        .event-hero h1 { color: #fff; font-size: 2.35rem; line-height: 1.25; margin-bottom: 0.8rem; }
+        .event-theme { max-width: 760px; margin: 0 auto 1.1rem; color: rgba(255,255,255,0.74); font-size: 0.96rem; line-height: 1.6; }
+        .event-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem 1.5rem; color: rgba(255,255,255,0.82); font-size: 0.84rem; }
+        .event-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+        .wave-wrap { background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%); line-height: 0; }
+        .wave-wrap svg { display: block; }
+        .page-body { padding: 2.8rem 0 5rem; }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; }
+        .section { margin-bottom: 3rem; }
+        .section-title { color: #2e1065; font-size: 1.4rem; margin-bottom: 1rem; }
+        .section-title::after { content: ''; display: block; width: 38px; height: 3px; margin-top: 0.4rem; background: linear-gradient(90deg, #7c3aed, #c084fc); border-radius: 2px; }
+
+        .overview-copy p { color: #4b5563; font-size: 0.92rem; margin-bottom: 0.9rem; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; }
+
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; border-top: 1px solid #ede9fe; }
+        footer a { color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            nav { padding: 0.6rem 1.2rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
+            .nav-links { gap: 0.65rem 0.9rem; justify-content: center; width: 100%; }
+            .nav-links a { font-size: 0.72rem; }
+            .event-hero { padding-top: 125px; }
+            .event-hero h1 { font-size: 1.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-name" style="text-decoration:none;">M3T&amp;I + X</a>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#research">Research Directions</a></li>
+        <li><a href="../index.html#news" class="active">News &amp; Updates</a></li>
+        <li><a href="../index.html#publication-highlights">Publication Highlights</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+    </ul>
+</nav>
+
+<header class="event-hero">
+    <div class="event-hero-inner">
+        <div class="event-kicker">Event Report</div>
+        <h1>The 2nd NUS Symposium on T&amp;I Evaluation</h1>
+        <p class="event-theme"><em>Advancing translation and interpreting quality assessment: Past lessons, transferrable insights, and future directions</em></p>
+        <div class="event-meta">
+            <span><i class="fa-regular fa-calendar"></i> 21-22 May 2026</span>
+            <span><i class="fa-solid fa-location-dot"></i> National University of Singapore</span>
+        </div>
+    </div>
+</header>
+
+<div class="wave-wrap">
+    <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:52px;">
+        <path d="M0,26 C240,52 480,0 720,22 C960,44 1200,6 1440,26 L1440,52 L0,52 Z" fill="#fafafa"/>
+    </svg>
+</div>
+
+<main class="page-body">
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Event Overview</h2>
+            <div class="overview-copy">
+                <p>The symposium was successfully held at the National University of Singapore on 21–22 May 2026. Under the theme <em>Advancing translation and interpreting quality assessment: Past lessons, transferrable insights, and future directions</em>, the two-day event brought together scholars to exchange ideas on recent developments and future directions in translation and interpreting quality assessment.</p>
+            </div>
+        </section>
+
+        <a class="back-link" href="../index.html#news"><i class="fa-solid fa-arrow-left"></i> Back to News &amp; Updates</a>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 M3T&amp;I + X</p>
+    <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a></p>
+</footer>
+
+</body>
+</html>

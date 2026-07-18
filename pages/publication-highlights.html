@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication Highlights | M3T&amp;I + X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --scroll-offset: 5.5rem; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--scroll-offset); }
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.18s; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            background: #fafafa;
+        }
+        a { color: #7c3aed; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 54px;
+            background: rgba(13, 8, 32, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-name { color: #fff; font-size: 1.05rem; font-weight: 600; }
+        .nav-links { display: flex; gap: 1.35rem; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
+        .nav-links a:hover { color: #fff; text-decoration: none; }
+        .nav-links a.active { color: #c4b5fd; }
+        .page-hero {
+            background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%);
+            padding: 100px 1.5rem 44px;
+            text-align: center;
+        }
+        .page-hero h1 { color: #fff; font-size: 2.35rem; line-height: 1.2; }
+        .wave-wrap { background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%); line-height: 0; }
+        .wave-wrap svg { display: block; }
+        .page-body { padding: 2.5rem 0 5rem; }
+        .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
+        .highlight-article {
+            scroll-margin-top: var(--scroll-offset);
+            padding: 0 0 2.6rem;
+            margin-bottom: 2.6rem;
+            border-bottom: 1px solid #ddd6fe;
+        }
+        .highlight-article:last-of-type { margin-bottom: 1.5rem; }
+        .article-header { margin-bottom: 1.2rem; }
+        .article-header h2 { color: #2e1065; font-size: 1.45rem; line-height: 1.4; margin-bottom: 0.55rem; }
+        .highlight-article p { color: #4b5563; font-size: 0.9rem; line-height: 1.78; margin-bottom: 0.9rem; }
+        .highlight-article p:last-child { margin-bottom: 0; }
+        .highlight-article .publication-citation { color: #64748b; font-size: 0.78rem; line-height: 1.6; }
+        .publication-citation a { font-weight: 600; white-space: nowrap; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; }
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; border-top: 1px solid #ede9fe; }
+        footer a { color: #94a3b8; }
+        @media (max-width: 768px) {
+            :root { --scroll-offset: 9rem; }
+            nav { padding: 0.6rem 1.2rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
+            .nav-links { gap: 0.65rem 0.9rem; justify-content: center; width: 100%; }
+            .nav-links a { font-size: 0.72rem; }
+            .page-hero { padding-top: 125px; }
+            .page-hero h1 { font-size: 1.9rem; }
+            .container { padding: 0 1.25rem; }
+            .article-header h2 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-name">M3T&amp;I + X</a>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#research">Research Directions</a></li>
+        <li><a href="../index.html#news">News &amp; Updates</a></li>
+        <li><a href="../index.html#publication-highlights" class="active">Publication Highlights</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+    </ul>
+</nav>
+
+<header class="page-hero">
+    <h1>Publication Highlights</h1>
+</header>
+<div class="wave-wrap">
+    <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:52px;">
+        <path d="M0,26 C240,52 480,0 720,22 C960,44 1200,6 1440,26 L1440,52 L0,52 Z" fill="#fafafa"/>
+    </svg>
+</div>
+
+<main class="page-body">
+    <div class="container">
+        <article class="highlight-article" id="zero-shot-evaluators">
+            <header class="article-header">
+                <h2>Can large language models evaluate interpreting as reliably as humans?</h2>
+                <p class="publication-citation">Han, C., &amp; Lu, X. (2026). Large language models as zero-shot evaluators of English–Chinese interpreting: A comparison of GPT-4o and DeepSeek-R1. <em>Language Testing, 43</em>(3), 263–289. <a href="https://doi.org/10.1177/02655322251406297" target="_blank" rel="noopener noreferrer">DOI</a></p>
+            </header>
+            <p>In this study, we conducted one of the first large-scale examinations of large language models as zero-shot evaluators of spoken-language interpreting. Using 541 pre-scored English–Chinese consecutive and simultaneous interpretations from the Interpreting Quality Evaluation Corpus, we compared GPT-4o and DeepSeek-R1 with trained human raters across three dimensions: scoring reliability, severity, and validity.</p>
+            <p>We created 16 LLM-based e-raters by systematically varying reference availability, scoring granularity, and model temperature. We then evaluated their performance using correlation analysis, linear mixed-effects modelling, and Many-Facet Rasch Measurement.</p>
+            <p>We found that both models generated more internally consistent scores than human raters and achieved moderately strong alignment with human judgments. Important differences nevertheless emerged. GPT-4o displayed scoring severity broadly comparable to that of human raters and achieved greater overall accuracy, whereas DeepSeek-R1 was considerably harsher. On average, GPT-4o assigned scores approximately 1.2 points higher than DeepSeek-R1 on an eight-point scale.</p>
+            <p>Assessment design also mattered. Segment-level scoring without reference interpretations generally produced the most accurate results, while temperature had little influence. Performance further varied across interpreting modes, directions, and quality criteria, with the strongest human–LLM alignment observed for information completeness.</p>
+            <p>Our findings demonstrate the potential of LLMs for scalable interpreting assessment while showing that model choice and scoring configuration critically shape the reliability and validity of automated judgments.</p>
+        </article>
+
+        <article class="highlight-article" id="ai-evaluation-review">
+            <header class="article-header">
+                <h2>How ready is AI to evaluate human translation and interpreting?</h2>
+                <p class="publication-citation">Han, C. (2026). Artificial intelligence-based automatic evaluation of human translation and interpreting: A systematic review of assessment and validation practices. <em>Research Methods in Applied Linguistics, 5</em>(1), 100300. <a href="https://doi.org/10.1016/j.rmal.2026.100300" target="_blank" rel="noopener noreferrer">DOI</a></p>
+            </header>
+            <p>As artificial intelligence becomes increasingly capable of assessing complex language performance, we asked a critical question: How robust, valid, and transparent are current AI-based approaches to evaluating human translation and interpreting?</p>
+            <p>Following PRISMA guidelines, we systematically identified and analyzed 69 publications through a three-pronged search combining academic databases, AI-powered discovery tools, and citation tracking. We examined these studies using the QAM³T&amp;I framework and a validation taxonomy covering assessment design, model architecture, human benchmark construction, score validity, generalizability, and transparency.</p>
+            <p>We found that research has expanded rapidly since 2020 but remains heavily concentrated on English–Chinese translation and interpreting in educational settings. Translation and consecutive interpreting dominate the literature, while subtitling, signed-language interpreting, post-editing, and other practices remain underexplored. Feature-based machine-learning models and repurposed machine-translation metrics remain the most common approaches, while conversational large language models represent only a small but growing share.</p>
+            <p>We also identified substantial methodological weaknesses. Many studies inadequately reported rater qualifications, training, reliability, and benchmark construction. Validation typically relied on correlations with human scores, with little attention to agreement, construct validity, or generalizability across populations and conditions. Post-hoc explainability was also rarely implemented.</p>
+            <p>Our review calls for transparent benchmark development, multi-pronged validation, more diverse languages and contexts, large annotated datasets, and explainable AI as foundations for trustworthy automated T&amp;I assessment.</p>
+        </article>
+
+        <article class="highlight-article" id="interpreting-rubrics">
+            <header class="article-header">
+                <h2>What makes an effective rubric for assessing interpreting?</h2>
+                <p class="publication-citation">Han, C., Jiang, M., &amp; Chen, Q. (2026). Rubricizing the assessment practice: A systematic review and meta-analysis of rubrics in rater-mediated assessment of language interpreting. <em>Language Testing, 43</em>(2), 197–232. <a href="https://doi.org/10.1177/02655322251391233" target="_blank" rel="noopener noreferrer">DOI</a></p>
+            </header>
+            <p>Rubrics are widely used in interpreter education, professional certification, and research, yet their development and effectiveness have rarely been examined systematically. In this study, we conducted the first large-scale systematic review and meta-analysis of rubric-based interpreting assessment, investigating how rubrics are developed, designed, applied, and validated.</p>
+            <p>Through database searching, citation tracking, and targeted examination of core literature, we analyzed 87 publications and catalogued 80 unique rubrics containing 265 subscales. We also synthesized 114 reliability coefficients from 21 empirical studies.</p>
+            <p>We found that most rubrics were analytic and designed for related types of interpreting tasks, typically containing four assessment criteria and five performance levels. Informational fidelity received the greatest weighting, averaging 52.3%, followed by target-language expression and delivery. Rubric use centered heavily on spoken consecutive interpreting and involved practitioners, trainers, and university students as raters.</p>
+            <p>A major concern involved rubric development. Approximately 80% of the reported development sources came from theory, existing rubrics, proficiency frameworks, or expert consultation, while performance samples and rater data were used much less frequently. Score use and policy context were almost entirely overlooked, even in high-stakes certification.</p>
+            <p>Overall, we found high rater reliability and moderate-to-strong validity. Reliability nevertheless varied by statistical coefficient, assessment criterion, and rubric length, with longer rubrics associated with lower reliability.</p>
+            <p>Our findings support concise, behaviorally anchored rubrics grounded in real interpreting performances and accompanied by systematic validation and rigorous rater training.</p>
+        </article>
+
+        <article class="highlight-article" id="adaptive-si-learning">
+            <header class="article-header">
+                <h2>Can adaptive technology make simultaneous interpreting easier to learn?</h2>
+                <p class="publication-citation">Jiang, Z. (2026). Scaffolding early-stage simultaneous interpreting learning using computerized dynamic assessment. <em>Language, Learning &amp; Technology, 30</em>(1), 1–25. <a href="https://doi.org/10.64152/10125/73701" target="_blank" rel="noopener noreferrer">DOI</a></p>
+            </header>
+            <p>Simultaneous interpreting places exceptional cognitive and emotional demands on beginners, who must comprehend, reformulate, and produce speech almost concurrently. In this study, we investigated whether computerized dynamic assessment (CDA) could support learners precisely when these processing difficulties arose.</p>
+            <p>Using a pretest–intervention–posttest design, we worked with 35 novice English–Chinese simultaneous interpreting learners from two intact classes. Eighteen learners used DynamiSI, a purpose-built platform that evaluated their renditions in real time and delivered four progressively explicit levels of support for five challenging syntactic structures. The comparison group received static, non-graduated assistance. We assessed performance using seven measures of complexity, accuracy, and fluency, alongside a questionnaire measuring interpreting-specific anxiety.</p>
+            <p>We found that learners receiving CDA made significantly greater gains in syntactic complexity, producing longer and structurally richer clauses. They also became more fluent, with marked reductions in filled pauses and overall disfluencies. Both groups improved in interpreting accuracy, suggesting that the short intervention produced additional benefits primarily for complexity and fluency rather than fidelity. Learners receiving adaptive scaffolding also reported substantially lower anxiety.</p>
+            <p>Our findings extend computerized dynamic assessment beyond receptive skills and discrete language exercises to complex, real-time oral performance. By providing immediate, individualized, and non-judgmental assistance, DynamiSI helped learners manage both syntactic processing demands and the affective pressures of interpreting. The study offers a scalable model for shifting interpreter education from delayed, product-focused feedback toward adaptive, process-oriented learning.</p>
+        </article>
+
+        <a class="back-link" href="../index.html#publication-highlights"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Publication Highlights</a>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 M3T&amp;I + X</p>
+    <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank" rel="noopener noreferrer">An Zhang</a></p>
+</footer>
+
+</body>
+</html>
