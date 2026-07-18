@@ -90,12 +90,22 @@
                 overscroll-behavior-x: contain;
                 scrollbar-width: none;
                 -webkit-overflow-scrolling: touch;
+                -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+                mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
             }
             .nav-links::-webkit-scrollbar { display: none; }
-            .nav-links::before,
-            .nav-links::after { content: ""; flex: 0 0 calc(50vw - 2rem); }
             .nav-links li { flex: 0 0 auto; }
-            .nav-links a { font-size: 0.74rem; }
+            .nav-links a { position: relative; font-size: 0.74rem; padding-bottom: 0.3rem; }
+            .nav-links a.active::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 2px;
+                border-radius: 2px;
+                background: #a78bfa;
+            }
             .event-hero { padding: 104px 1.1rem 36px; }
             .event-hero h1 { font-size: 1.8rem; }
             .event-theme { font-size: 0.9rem; }
@@ -163,16 +173,24 @@
 <script>
 (function () {
     var mobileNav = window.matchMedia('(max-width: 768px)');
-    function centerActiveNav() {
+    function revealActiveNav() {
         if (!mobileNav.matches) return;
         var list = document.querySelector('.nav-links');
         var active = list && list.querySelector('a.active');
         if (!list || !active) return;
-        var left = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
+        var listRect = list.getBoundingClientRect();
+        var activeRect = active.getBoundingClientRect();
+        var inset = 16;
+        var left = list.scrollLeft;
+        if (activeRect.left < listRect.left + inset) {
+            left -= listRect.left + inset - activeRect.left;
+        } else if (activeRect.right > listRect.right - inset) {
+            left += activeRect.right - (listRect.right - inset);
+        }
         list.scrollTo({ left: Math.max(0, left), behavior: 'auto' });
     }
-    window.addEventListener('load', centerActiveNav);
-    window.addEventListener('resize', centerActiveNav);
+    window.addEventListener('load', revealActiveNav);
+    window.addEventListener('resize', revealActiveNav);
 })();
 </script>
 
