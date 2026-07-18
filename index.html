@@ -771,6 +771,12 @@
     function syncActiveNav(hash, behavior) {
         var targetHash = hash || '#home';
         var links = document.querySelectorAll('.nav-links a[href^="#"]');
+        if (!mobileNav.matches) {
+            links.forEach(function (link) {
+                link.classList.toggle('active', link.getAttribute('href') === '#home');
+            });
+            return;
+        }
         var matched = false;
         links.forEach(function (link) {
             var isActive = link.getAttribute('href') === targetHash;
@@ -818,7 +824,7 @@
     syncScrollPadding();
     window.addEventListener('resize', function () {
         syncScrollPadding();
-        centerActiveNav('auto');
+        syncActiveNav(location.hash, 'auto');
     });
     window.addEventListener('load', function () {
         syncScrollPadding();
