@@ -755,6 +755,29 @@
 <script>
 (function () {
     var EXTRA = 20;
+    var mobileNav = window.matchMedia('(max-width: 768px)');
+
+    function centerActiveNav(behavior) {
+        if (!mobileNav.matches) return;
+        var list = document.querySelector('.nav-links');
+        var active = list && list.querySelector('a.active');
+        if (!list || !active) return;
+        var left = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
+        list.scrollTo({ left: Math.max(0, left), behavior: behavior || 'auto' });
+    }
+
+    function syncActiveNav(hash, behavior) {
+        var targetHash = hash || '#home';
+        var links = document.querySelectorAll('.nav-links a[href^="#"]');
+        var matched = false;
+        links.forEach(function (link) {
+            var isActive = link.getAttribute('href') === targetHash;
+            link.classList.toggle('active', isActive);
+            matched = matched || isActive;
+        });
+        if (!matched && links[0]) links[0].classList.add('active');
+        centerActiveNav(behavior);
+    }
 
     function scrollOffset() {
         var nav = document.querySelector('nav');
@@ -779,6 +802,7 @@
             if (!target) return;
             e.preventDefault();
             history.pushState(null, '', hash);
+            if (a.closest('.nav-links')) syncActiveNav(hash, 'smooth');
             scrollToTarget(target, true);
         });
     });
@@ -790,12 +814,19 @@
     }
 
     syncScrollPadding();
-    window.addEventListener('resize', syncScrollPadding);
+    window.addEventListener('resize', function () {
+        syncScrollPadding();
+        centerActiveNav('auto');
+    });
     window.addEventListener('load', function () {
         syncScrollPadding();
+        syncActiveNav(location.hash, 'auto');
         scrollToHash(false);
     });
-    window.addEventListener('hashchange', function () { scrollToHash(true); });
+    window.addEventListener('hashchange', function () {
+        syncActiveNav(location.hash, 'smooth');
+        scrollToHash(true);
+    });
 })();
 </script>
 
