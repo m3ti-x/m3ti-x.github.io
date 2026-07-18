@@ -68,14 +68,43 @@
         footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: #94a3b8; border-top: 1px solid #ede9fe; }
         footer a { color: #94a3b8; }
         @media (max-width: 768px) {
-            :root { --scroll-offset: 9rem; }
-            nav { padding: 0.6rem 1.2rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
-            .nav-links { gap: 0.65rem 0.9rem; justify-content: center; width: 100%; }
-            .nav-links a { font-size: 0.72rem; }
-            .page-hero { padding-top: 125px; }
-            .page-hero h1 { font-size: 1.9rem; }
-            .container { padding: 0 1.25rem; }
+            :root { --scroll-offset: 6.5rem; }
+            nav {
+                display: block;
+                height: 84px;
+                min-height: 0;
+                padding: 0.55rem 1rem 0.45rem;
+                overflow: hidden;
+            }
+            .nav-name { display: block; width: max-content; margin: 0 auto 0.35rem; font-size: 0.98rem; line-height: 1.35; }
+            .nav-links {
+                width: calc(100% + 2rem);
+                margin: 0 -1rem;
+                padding: 0 1rem 0.15rem;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 1rem;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links li { flex: 0 0 auto; }
+            .nav-links a { font-size: 0.74rem; }
+            .page-hero { padding: 110px 1rem 36px; }
+            .page-hero h1 { font-size: 1.85rem; }
+            .page-body { padding: 2rem 0 3.5rem; }
+            .container { padding: 0 1.1rem; }
             .article-header h2 { font-size: 1.25rem; }
+            .highlight-article { padding-bottom: 2rem; margin-bottom: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 0.95rem; }
+            .page-hero h1 { font-size: 1.7rem; }
+            .article-header h2 { font-size: 1.16rem; }
+            .highlight-article p { overflow-wrap: anywhere; }
+            footer { padding: 1.5rem 1rem; }
         }
     </style>
 </head>

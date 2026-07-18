@@ -192,13 +192,49 @@
         footer a { color: #94a3b8; }
         footer a:hover { color: #7c3aed; }
 
+        @media (max-width: 768px) {
+            :root { --scroll-offset: 6.5rem; }
+            nav {
+                display: block;
+                height: 84px;
+                min-height: 0;
+                padding: 0.55rem 1rem 0.45rem;
+                overflow: hidden;
+            }
+            .nav-name { display: block; width: max-content; margin: 0 auto 0.35rem; font-size: 0.98rem; line-height: 1.35; }
+            .nav-links {
+                width: calc(100% + 2rem);
+                margin: 0 -1rem;
+                padding: 0 1rem 0.15rem;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 1rem;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links li { flex: 0 0 auto; }
+            .nav-links a { font-size: 0.74rem; }
+            .pubs-hero { padding: 110px 1.1rem 36px; }
+            .pubs-hero h1 { font-size: 2rem; }
+            .pubs-body { padding: 2rem 0 3.5rem; }
+            .container { padding: 0 1.1rem; }
+        }
         @media (max-width: 600px) {
-            :root { --scroll-offset: 9.5rem; }
-            .pub-entry { flex-direction: column; gap: 0.5rem; }
+            .pub-entry { flex-direction: column; gap: 0.5rem; padding: 1rem; border-radius: 8px; }
             .venue { min-width: auto; }
-            nav { padding: 0.75rem 1rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
-            .nav-links { gap: 0.65rem 0.9rem; justify-content: center; width: 100%; }
-            .nav-links a { font-size: 0.72rem; }
+            .pub-filter-wrap, .pub-note { border-radius: 8px; }
+            .pubs-hero-sub { gap: 0.65rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 0.95rem; }
+            .pub-filter-wrap { padding: 1rem; }
+            .filter-row { align-items: flex-start; }
+            .filter-label { width: 100%; margin-top: 0.25rem; }
+            .pubs-hero { padding-left: 0.95rem; padding-right: 0.95rem; }
+            footer { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
