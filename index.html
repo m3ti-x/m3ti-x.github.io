@@ -426,28 +426,65 @@
         footer a:hover { color: #7c3aed; }
 
         @media (max-width: 768px) {
-            :root { --scroll-offset: 9.5rem; }
+            :root { --scroll-offset: 6.5rem; }
+            nav {
+                display: block;
+                height: 84px;
+                min-height: 0;
+                padding: 0.55rem 1rem 0.45rem;
+                overflow: hidden;
+            }
+            .nav-name {
+                display: block;
+                width: max-content;
+                margin: 0 auto 0.35rem;
+                font-size: 0.98rem;
+                line-height: 1.35;
+            }
+            .nav-links {
+                width: calc(100% + 2rem);
+                margin: 0 -1rem;
+                padding: 0 1rem 0.15rem;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 1rem;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links li { flex: 0 0 auto; }
+            .nav-links a { font-size: 0.74rem; }
+            .hero { padding: 112px 0 46px; }
+            .hero-inner { padding: 0 1.15rem; }
+            .content { padding: 2.75rem 0 3.5rem; }
+            .container { padding: 0 1.15rem; }
+            .section { margin-bottom: 3rem; }
             .ri-grid { grid-template-columns: 1fr 1fr; }
             .team-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-director-card { grid-column: 1 / -1; }
             .news-item { flex-direction: column; gap: 0.6rem; }
-            nav { padding: 0 1.2rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
-            .nav-links { gap: 0.75rem 1rem; justify-content: center; width: 100%; }
             .hero-inner { flex-direction: column; text-align: center; gap: 1.8rem; }
             .hero-affil { justify-content: center; }
             .hero-buttons { justify-content: center; }
             .hero-photo img, .photo-fallback { width: 145px; height: 145px; }
             .hero-text h1 { font-size: 2.1rem; }
-            nav { padding: 0 1.2rem; }
-            .nav-links { gap: 0.65rem; }
-            .nav-links a { font-size: 0.74rem; }
+            .recruit-box { padding: 1.25rem; }
         }
         @media (max-width: 480px) {
             .ri-grid { grid-template-columns: 1fr; }
             .team-overview-grid { grid-template-columns: 1fr; }
             .team-director-card { grid-column: auto; }
-            .nav-links { gap: 0.5rem 0.7rem; }
-            .nav-links a { font-size: 0.7rem; }
+            .hero { padding-top: 108px; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-inner, .container { padding-left: 0.95rem; padding-right: 0.95rem; }
+            .lab-badge { max-width: 100%; font-size: 0.72rem; }
+            .section-title { font-size: 1.35rem; }
+            .ri-card, .news-item, .team-director-card, .team-overview-card { border-radius: 8px; }
+            .news-item { padding: 0.9rem 1rem; }
+            .team-overview-footer { text-align: left; }
+            footer { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
