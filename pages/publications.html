@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | M3T&amp;I + X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --scroll-offset: 7rem; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--scroll-offset); }
+
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.18s; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            background: #fafafa;
+        }
+        a { color: #7c3aed; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 54px;
+            background: rgba(13, 8, 32, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-name { font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: 0.02em; }
+        .nav-links { display: flex; gap: 1.35rem; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; transition: color 0.18s; white-space: nowrap; }
+        .nav-links a:hover { color: #fff; text-decoration: none; }
+        .nav-links a.active { color: #c4b5fd; text-decoration: none; }
+
+        .pubs-hero {
+            background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%);
+            padding: 100px 0 44px;
+            text-align: center;
+            position: relative;
+        }
+        .pubs-hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.7rem;
+        }
+        .pubs-hero-sub {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+        }
+        .pubs-hero-sub a { color: rgba(255,255,255,0.82); display: inline-flex; align-items: center; gap: 0.35rem; }
+        .pubs-hero-sub a:hover { color: #fff; text-decoration: none; }
+        .pubs-hero-sep { color: rgba(255,255,255,0.3); }
+        .wave-wrap { background: linear-gradient(140deg, #0d0820 0%, #2e1065 45%, #5b21b6 100%); line-height: 0; }
+        .wave-wrap svg { display: block; }
+
+        .pubs-body { background: #fafafa; padding: 2.5rem 0 5rem; }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        .pub-note {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            font-size: 0.84rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .pub-filter-wrap {
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1rem 1.4rem;
+            margin-bottom: 2.2rem;
+        }
+        .filter-header {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+        .filter-rows { display: flex; flex-direction: column; gap: 0.5rem; }
+        .filter-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .filter-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #7c3aed;
+            width: 72px;
+            flex-shrink: 0;
+        }
+        .fchip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #475569;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.15s;
+            user-select: none;
+        }
+        .fchip:hover { background: #f1f5f9; border-color: #c4b5fd; }
+        .fchip.active { background: #f5f3ff; color: #6d28d9; border-color: #c4b5fd; }
+        .fchip-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+        .pub-year-block { margin-bottom: 2.5rem; }
+        .year-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .year-label { font-size: 1.35rem; font-weight: 700; color: #2e1065; flex-shrink: 0; }
+        .year-line { flex: 1; height: 2px; background: #ede9fe; border-radius: 1px; }
+
+        .pub-entry {
+            display: flex;
+            gap: 1rem;
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: box-shadow 0.18s;
+            align-items: flex-start;
+        }
+        .pub-entry:hover { box-shadow: 0 4px 18px rgba(109,40,217,0.08); }
+        .pub-entry.hidden { display: none; }
+
+        .venue {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.22rem 0.6rem;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 66px;
+            margin-top: 0.1rem;
+            letter-spacing: 0.01em;
+        }
+        .v-assess { color: #7c3aed; background: #faf5ff; border: 1px solid #ddd6fe; }
+        .v-ai     { color: #1d4ed8; background: #eff6ff; border: 1px solid #bfdbfe; }
+        .v-meta   { color: #15803d; background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .v-cog    { color: #c2410c; background: #fff7ed; border: 1px solid #fed7aa; }
+        .v-book   { color: #475569; background: #f8fafc; border: 1px solid #cbd5e1; }
+
+        .pe-title { font-size: 0.92rem; font-weight: 600; color: #1e293b; line-height: 1.45; margin-bottom: 0.28rem; }
+        .pe-authors { font-size: 0.82rem; color: #64748b; line-height: 1.5; margin-bottom: 0.38rem; }
+        .pe-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .pet {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: #64748b;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 0.1rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid #ede9fe;
+            background: #fafafa;
+        }
+        footer a { color: #94a3b8; }
+        footer a:hover { color: #7c3aed; }
+
+        @media (max-width: 600px) {
+            :root { --scroll-offset: 9.5rem; }
+            .pub-entry { flex-direction: column; gap: 0.5rem; }
+            .venue { min-width: auto; }
+            nav { padding: 0.75rem 1rem; height: auto; min-height: 54px; flex-wrap: wrap; gap: 0.5rem; }
+            .nav-links { gap: 0.65rem 0.9rem; justify-content: center; width: 100%; }
+            .nav-links a { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-name" style="text-decoration:none;">M3T&amp;I + X</a>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#research">Research Directions</a></li>
+        <li><a href="../index.html#news">News &amp; Updates</a></li>
+        <li><a href="../index.html#publication-highlights">Publication Highlights</a></li>
+        <li><a href="../index.html#team">Team</a></li>
+    </ul>
+</nav>
+
+<div class="pubs-hero">
+    <h1>Publications</h1>
+    <div class="pubs-hero-sub">
+        <span>M3T&amp;I + X Research Lab</span>
+        <span class="pubs-hero-sep">·</span>
+        <a href="https://scholar.google.com/citations?user=wLx0mIoAAAAJ&hl=en" target="_blank">
+            <i class="ai ai-google-scholar"></i> Google Scholar
+        </a>
+        <span class="pubs-hero-sep">·</span>
+        <a href="https://discovery.nus.edu.sg/25035-chao-han/publications" target="_blank">
+            <i class="fa-solid fa-list"></i> NUS Discovery Profile
+        </a>
+    </div>
+</div>
+<div class="wave-wrap">
+    <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:52px;">
+        <path d="M0,26 C240,52 480,0 720,22 C960,44 1200,6 1440,26 L1440,52 L0,52 Z" fill="#fafafa"/>
+    </svg>
+</div>
+
+<div class="pubs-body">
+<div class="container">
+
+    <!-- <div class="pub-note">
+        <i class="fa-solid fa-circle-info" style="color:#7c3aed;margin-right:0.4rem;"></i>
+        Lab publication list (78 entries, 2015–2026), primarily by Lab Director Prof. Chao Han and collaborators. Source:
+        <a href="https://discovery.nus.edu.sg/25035-chao-han/publications" target="_blank">NUS Discovery</a>.
+    </div> -->
+
+    <div class="pub-filter-wrap">
+        <div class="filter-header"><i class="fa-solid fa-filter"></i> Filter by Topic</div>
+        <div class="filter-rows">
+            <div class="filter-row">
+                <span class="filter-label">Focus</span>
+                <span class="fchip" data-tag="assessment"><span class="fchip-dot" style="background:#7c3aed"></span>T&amp;I Assessment</span>
+                <span class="fchip" data-tag="ai-llm"><span class="fchip-dot" style="background:#1d4ed8"></span>AI / LLM Evaluation</span>
+                <span class="fchip" data-tag="rater-cog"><span class="fchip-dot" style="background:#c2410c"></span>Rater Cognition</span>
+                <span class="fchip" data-tag="meta"><span class="fchip-dot" style="background:#15803d"></span>Meta-research</span>
+            </div>
+            <div class="filter-row">
+                <span class="filter-label">Mode</span>
+                <span class="fchip" data-tag="interpreting"><span class="fchip-dot" style="background:#0891b2"></span>Interpreting</span>
+                <span class="fchip" data-tag="translation"><span class="fchip-dot" style="background:#0369a1"></span>Translation</span>
+                <span class="fchip" data-tag="psychometrics"><span class="fchip-dot" style="background:#7c3aed"></span>Psychometrics</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2026 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2026</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">LLT '26</span>
+            <div>
+                <div class="pe-title">Scaffolding early-stage simultaneous interpreting learning using computerized dynamic assessment</div>
+                <div class="pe-authors">Jiang, Z. <em>Language, Learning &amp; Technology, 30</em>(1), 1–25.</div>
+                <div class="pe-tags"><span class="pet">Dynamic Assessment</span><span class="pet">Interpreter Education</span><a class="pet" href="https://doi.org/10.64152/10125/73701" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting psychometrics">
+            <span class="venue v-assess">LT '26</span>
+            <div>
+                <div class="pe-title">Large language models as zero-shot evaluators of English–Chinese interpreting: A comparison of GPT-4o and DeepSeek-R1</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Lu, X. <em>Language Testing, 43</em>(3), 263–289.</div>
+                <div class="pe-tags"><span class="pet">LLM Evaluation</span><span class="pet">Interpreting</span><span class="pet">Psychometrics</span><a class="pet" href="https://doi.org/10.1177/02655322251406297" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="ai-llm translation">
+            <span class="venue v-ai">IJAL '26</span>
+            <div>
+                <div class="pe-title">Rethinking “elaborate equals effective”: Unpacking the impact of feedback complexity and text type on learner engagement with GenAI’s feedback</div>
+                <div class="pe-authors">Jiang, Z. <em>International Journal of Applied Linguistics, 36</em>(2), 1510–1524.</div>
+                <div class="pe-tags"><span class="pet">GenAI Feedback</span><span class="pet">Learner Engagement</span><a class="pet" href="https://doi.org/10.1111/ijal.70004" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm meta">
+            <span class="venue v-meta">RMAL '26</span>
+            <div>
+                <div class="pe-title">Artificial intelligence-based automatic evaluation of human translation and interpreting: A systematic review of assessment and validation practices</div>
+                <div class="pe-authors"><strong>Han, C.</strong> <em>Research Methods in Applied Linguistics, 5</em>(1), 100300.</div>
+                <div class="pe-tags"><span class="pet">Systematic Review</span><span class="pet">AI Evaluation</span><span class="pet">T&amp;I Assessment</span><a class="pet" href="https://doi.org/10.1016/j.rmal.2026.100300" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting psychometrics">
+            <span class="venue v-ai">ITT '26</span>
+            <div>
+                <div class="pe-title">ChatGPT as an evaluator in summative assessment of interpreting: A psychometric analysis of ChatGPT versus human raters</div>
+                <div class="pe-authors">Lu, X., &amp; <strong>Han, C.</strong> <em>The Interpreter and Translator Trainer</em>. Advance online publication.</div>
+                <div class="pe-tags"><span class="pet">ChatGPT</span><span class="pet">E-raters</span><span class="pet">Psychometrics</span><a class="pet" href="https://doi.org/10.1080/1750399X.2026.2660553" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta psychometrics">
+            <span class="venue v-assess">LT '26</span>
+            <div>
+                <div class="pe-title">Rubricizing the assessment practice: A systematic review and meta-analysis of rubrics in rater-mediated assessment of language interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Jiang, M., &amp; Chen, Q. <em>Language Testing, 43</em>(2), 197–232.</div>
+                <div class="pe-tags"><span class="pet">Rubrics</span><span class="pet">Meta-analysis</span><span class="pet">Interpreting</span><a class="pet" href="https://doi.org/10.1177/02655322251391233" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="translation ai-llm">
+            <span class="venue v-ai">TS '26</span>
+            <div>
+                <div class="pe-title">Exploring thematic rewritings in literary translation through LDA topic modeling: A case study of <em>The Field of Life and Death</em></div>
+                <div class="pe-authors">Jiang, Z., &amp; Lv, Q. <em>Translation Studies, 19</em>(1), 74–92.</div>
+                <div class="pe-tags"><span class="pet">Topic Modeling</span><span class="pet">Literary Translation</span><a class="pet" href="https://doi.org/10.1080/14781700.2025.2537444" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting meta">
+            <span class="venue v-ai">Intp '26</span>
+            <div>
+                <div class="pe-title">Applying n-gram-based evaluation metrics to assess human interpreting: A battery of replications with internal meta-analysis</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Lu, X., Wang, W., &amp; Chen, S. <em>Interpreting, 28</em>(1), 58–90.</div>
+                <div class="pe-tags"><span class="pet">N-gram Metrics</span><span class="pet">Replication</span><span class="pet">Meta-analysis</span><a class="pet" href="https://doi.org/10.1075/intp.00127.han" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="ai-llm translation">
+            <span class="venue v-ai">IJAL '26</span>
+            <div>
+                <div class="pe-title">Distinguishing ChatGPT-generated translation from neural machine translation and human translation: A linguistic and stylistic approach</div>
+                <div class="pe-authors">Jiang, Z., Lv, Q., Zhang, Z., &amp; Lei, L. <em>International Journal of Applied Linguistics</em>. Advance online publication.</div>
+                <div class="pe-tags"><span class="pet">ChatGPT</span><span class="pet">Machine Translation</span><span class="pet">Stylistics</span><a class="pet" href="https://doi.org/10.1111/ijal.70160" target="_blank" rel="noopener noreferrer">DOI</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2025</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting rater-cog">
+            <span class="venue v-assess">APER '25</span>
+            <div>
+                <div class="pe-title">The Role of Annotating in Peer Assessment of Interpreting: A Quasi-experimental Investigation</div>
+                <div class="pe-authors">Chen, S., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Peer Assessment</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment translation rater-cog">
+            <span class="venue v-cog">Target '25</span>
+            <div>
+                <div class="pe-title">Modeling rater cognition in translation assessment: An exploratory investigation based on think-aloud, eye-tracking, and interview data</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Chen, S., &amp; Feng, J.</div>
+                <div class="pe-tags"><span class="pet">Rater Cognition</span><span class="pet">Eye Tracking</span><span class="pet">Translation</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-meta">Target '25</span>
+            <div>
+                <div class="pe-title">Conducting replication in translation and interpreting studies: Stakeholders' perceptions, practices, and expectations</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Wang, Y.</div>
+                <div class="pe-tags"><span class="pet">Replication</span><span class="pet">Meta-research</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting">
+            <span class="venue v-ai">RMAL '25</span>
+            <div>
+                <div class="pe-title">Beyond BLEU: Repurposing neural-based metrics to assess interlingual interpreting in tertiary-level language learning settings</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Lu, X.</div>
+                <div class="pe-tags"><span class="pet">Neural Metrics</span><span class="pet">BLEURT</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting psychometrics">
+            <span class="venue v-ai">RMAL '25</span>
+            <div>
+                <div class="pe-title">Modeling rater judgments of interpreting quality: Ordinal logistic regression using neural-based evaluation metrics, acoustic fluency measures, and computational linguistic indices</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Lu, X., &amp; Chen, S.</div>
+                <div class="pe-tags"><span class="pet">Automatic Assessment</span><span class="pet">Psychometrics</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment meta">
+            <span class="venue v-assess">I&amp;S '25</span>
+            <div>
+                <div class="pe-title">Quality assessment in multilingual, multimodal, and multiagent translation and interpreting (QAM³T&amp;I): Proposing a unifying framework for research</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">QAM³T&amp;I</span><span class="pet">Framework</span><span class="pet">Systematic Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting meta">
+            <span class="venue v-ai">Intp '25</span>
+            <div>
+                <div class="pe-title">Applying n-gram-based evaluation metrics to assess human interpreting: A battery of replications with internal meta-analysis</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Lu, X., &amp; Wang, W.</div>
+                <div class="pe-tags"><span class="pet">BLEU</span><span class="pet">Replication</span><span class="pet">Meta-analysis</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting psychometrics">
+            <span class="venue v-assess">LT '25</span>
+            <div>
+                <div class="pe-title">Large language models as zero-shot evaluators of English–Chinese interpreting: A comparison of GPT-4o and DeepSeek-R1</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Lu, X.</div>
+                <div class="pe-tags"><span class="pet">LLM</span><span class="pet">GPT-4o</span><span class="pet">E-raters</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting">
+            <span class="venue v-ai">ITT '25</span>
+            <div>
+                <div class="pe-title">Taming generative AI for interpreter education: Using large language models in classroom-based assessment of English-Chinese consecutive interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Lu, X., &amp; Fan, Q.</div>
+                <div class="pe-tags"><span class="pet">Generative AI</span><span class="pet">Interpreter Education</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2024</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">Forum '24</span>
+            <div>
+                <div class="pe-title">Evaluating written versus audio feedback in formative assessment of consecutive interpreting: An exploratory qualitative investigation</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Chen, S.</div>
+                <div class="pe-tags"><span class="pet">Formative Assessment</span><span class="pet">Feedback</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta psychometrics">
+            <span class="venue v-meta">IJAL '24</span>
+            <div>
+                <div class="pe-title">Examining statistical literacy, attitudes toward statistics, and statistics self-efficacy among applied linguistics research students in China</div>
+                <div class="pe-authors">Zhang, P., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Statistics</span><span class="pet">Applied Linguistics</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting rater-cog">
+            <span class="venue v-cog">ITT '24</span>
+            <div>
+                <div class="pe-title">Raters' scoring process in assessment of interpreting: An empirical study based on eye tracking and retrospective verbalisation</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Zheng, B., Xie, M., et al.</div>
+                <div class="pe-tags"><span class="pet">Eye Tracking</span><span class="pet">Rater Cognition</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2023</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta">
+            <span class="venue v-meta">TIS '23</span>
+            <div>
+                <div class="pe-title">Relating utterance fluency to perceived fluency of interpreting: A partial replication and a mini meta-analysis</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Yang, L.</div>
+                <div class="pe-tags"><span class="pet">Fluency</span><span class="pet">Replication</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment psychometrics">
+            <span class="venue v-assess">LTA '23</span>
+            <div>
+                <div class="pe-title">基于配对比较法的口笔译质量评估：原理、实践与展望 [A comparative judgment approach to translation and interpreting quality assessment: Principles, practices, and prospects]</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Comparative Judgment</span><span class="pet">T&amp;I Assessment</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta psychometrics">
+            <span class="venue v-meta">Target '23</span>
+            <div>
+                <div class="pe-title">Use of statistical methods in translation and interpreting research: A longitudinal quantitative analysis of eleven peer-reviewed journals (2000–2020)</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Lu, X., &amp; Zhang, P.</div>
+                <div class="pe-tags"><span class="pet">Statistics</span><span class="pet">Meta-research</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">RELA '23</span>
+            <div>
+                <div class="pe-title">Effects of language background and directionality on raters' assessments of spoken-language interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Hu, J., &amp; Deng, Y.</div>
+                <div class="pe-tags"><span class="pet">Rater Effects</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="interpreting">
+            <span class="venue v-book">Book '23</span>
+            <div>
+                <div class="pe-title">Challenging Interpreting: A Course Book of Interpreting Skills 《口译教程》（第3版）</div>
+                <div class="pe-authors">Yang, L., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Textbook</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Wiley '23</span>
+            <div>
+                <div class="pe-title">Translation and Interpreting: Mixed-Methods Research</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Mixed Methods</span><span class="pet">Research Methods</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment translation psychometrics">
+            <span class="venue v-assess">Target '23</span>
+            <div>
+                <div class="pe-title">An item-based, Rasch-calibrated approach to assessing translation quality</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Shang, X.</div>
+                <div class="pe-tags"><span class="pet">Rasch</span><span class="pet">Translation</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting">
+            <span class="venue v-ai">Intp '23</span>
+            <div>
+                <div class="pe-title">Automatic assessment of spoken-language interpreting based on machine-translation evaluation metrics: A multi-scenario exploratory study</div>
+                <div class="pe-authors">Lu, X., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">BLEU</span><span class="pet">Automatic Assessment</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting">
+            <span class="venue v-ai">CALL '23</span>
+            <div>
+                <div class="pe-title">Can automated machine translation evaluation metrics be used to assess students' interpretation in the language learning classroom?</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Lu, X.</div>
+                <div class="pe-tags"><span class="pet">MT Metrics</span><span class="pet">Language Learning</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta psychometrics">
+            <span class="venue v-assess">ITT '23</span>
+            <div>
+                <div class="pe-title">Interrogating the predictive validity of aptitude testing for interpreting: A systematic methodological review</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Aptitude Testing</span><span class="pet">Systematic Review</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2022</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta">
+            <span class="venue v-meta">TIS '22</span>
+            <div>
+                <div class="pe-title">Relating utterance fluency to perceived fluency of interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Yang, L.</div>
+                <div class="pe-tags"><span class="pet">Fluency</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="translation">
+            <span class="venue v-assess">SLTC '22</span>
+            <div>
+                <div class="pe-title">Relating translation task duration to lexical simplification of translated texts: An inter-modal, correlational analysis</div>
+                <div class="pe-authors">Chen, S., <strong>Han, C.</strong>, &amp; Wen, X.</div>
+                <div class="pe-tags"><span class="pet">Translation</span><span class="pet">Cognition</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '22</span>
+            <div>
+                <div class="pe-title">Dictionary of education and assessment in translation and interpreting studies (TIS)</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment translation psychometrics">
+            <span class="venue v-assess">ALC '22</span>
+            <div>
+                <div class="pe-title">Using computerised comparative judgement to assess translation</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Hu, B., Fan, Q., et al.</div>
+                <div class="pe-tags"><span class="pet">Comparative Judgment</span><span class="pet">Translation</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">LT '22</span>
+            <div>
+                <div class="pe-title">A comparative judgment approach to assessing Chinese Sign Language interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Xiao, X.</div>
+                <div class="pe-tags"><span class="pet">Comparative Judgment</span><span class="pet">Sign Language</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">Intp '22</span>
+            <div>
+                <div class="pe-title">Assessing spoken-language interpreting: The method of comparative judgement</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Comparative Judgment</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">ITT '22</span>
+            <div>
+                <div class="pe-title">Holistic versus analytic scoring of spoken-language interpreting: A multi-perspectival comparative analysis</div>
+                <div class="pe-authors">Chen, J., Yang, H., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Holistic Scoring</span><span class="pet">Analytic Rubrics</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta">
+            <span class="venue v-meta">LT '22</span>
+            <div>
+                <div class="pe-title">Interpreting testing and assessment: A state-of-the-art review</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">State-of-the-art Review</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2021</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-book">Routledge '21</span>
+            <div>
+                <div class="pe-title">Testing for professional qualification in conference interpreting</div>
+                <div class="pe-authors">Dawrant, A. C., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Chapter</span><span class="pet">Certification</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment ai-llm interpreting">
+            <span class="venue v-ai">I&amp;S '21</span>
+            <div>
+                <div class="pe-title">Interpreting quality assessment re-imagined: The synergy between human and machine scoring</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Lu, X.</div>
+                <div class="pe-tags"><span class="pet">Human–Machine Scoring</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">Intp '21</span>
+            <div>
+                <div class="pe-title">Assessing the fidelity of consecutive interpreting: The effects of using source versus target text as the reference material</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Xiao, R., &amp; Su, W.</div>
+                <div class="pe-tags"><span class="pet">Fidelity</span><span class="pet">Consecutive Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">Meta '21</span>
+            <div>
+                <div class="pe-title">Analytic rubric scoring versus comparative judgment: A comparison of two approaches to assessing spoken-language interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">ARS vs. CJ</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">AEHE '21</span>
+            <div>
+                <div class="pe-title">Accuracy of peer ratings on the quality of spoken-language interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Zhao, X.</div>
+                <div class="pe-tags"><span class="pet">Peer Assessment</span><span class="pet">Rater Accuracy</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-book">NFTS '21</span>
+            <div>
+                <div class="pe-title">Detecting and measuring rater effects in interpreting assessment: A methodological comparison of classical test theory, generalizability theory, and many-facet Rasch measurement</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Rater Effects</span><span class="pet">Psychometrics</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-book">Book '21</span>
+            <div>
+                <div class="pe-title">Testing and Assessment of Interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Monograph</span><span class="pet">Interpreting</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta">
+            <span class="venue v-book">NFTS '21</span>
+            <div>
+                <div class="pe-title">Testing and assessment of interpreting in China: An overview</div>
+                <div class="pe-authors">Chen, J., &amp; <strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Chapter</span><span class="pet">China</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">Persp '21</span>
+            <div>
+                <div class="pe-title">Using unfilled pauses to measure (dis)fluency in English-Chinese consecutive interpreting: In search of an optimal pause threshold(s)</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; An, K.</div>
+                <div class="pe-tags"><span class="pet">Fluency</span><span class="pet">Temporal Variables</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2020</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">Intp '20</span>
+            <div>
+                <div class="pe-title">Modeling the relationship between utterance fluency and raters' perceived fluency of consecutive interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, Chen, S., Fu, R., et al.</div>
+                <div class="pe-tags"><span class="pet">Fluency</span><span class="pet">Regression</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">Persp '20</span>
+            <div>
+                <div class="pe-title">Using self-assessment as a formative assessment tool in an English-Chinese interpreting course: Student views and perceptions of its utility</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Fan, Q.</div>
+                <div class="pe-tags"><span class="pet">Self-assessment</span><span class="pet">Formative Assessment</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '20</span>
+            <div>
+                <div class="pe-title">Making Way in Corpus-based Interpreting Studies</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment translation meta">
+            <span class="venue v-meta">Translator '20</span>
+            <div>
+                <div class="pe-title">Translation quality assessment: A critical methodological review</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">TQA</span><span class="pet">Methodological Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="psychometrics">
+            <span class="venue v-book">Review '20</span>
+            <div>
+                <div class="pe-title">Rasch Analysis in the Human Sciences</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span><span class="pet">Rasch</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2019</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">LT '19</span>
+            <div>
+                <div class="pe-title">A generalizability theory study of optimal measurement design for a summative assessment of English/Chinese consecutive interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">G-Theory</span><span class="pet">Summative Assessment</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="psychometrics">
+            <span class="venue v-book">Review '19</span>
+            <div>
+                <div class="pe-title">Chinese as a Second Language Assessment</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="psychometrics">
+            <span class="venue v-book">Review '19</span>
+            <div>
+                <div class="pe-title">Invariant Measurement with Raters and Rating Scales: Rasch Models for Rater-Mediated Assessments</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span><span class="pet">Rasch</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-book">IGI '19</span>
+            <div>
+                <div class="pe-title">Conceptualizing and operationalizing a formative assessment model for English-Chinese consecutive interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Chapter</span><span class="pet">Formative Assessment</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="psychometrics">
+            <span class="venue v-book">Review '19</span>
+            <div>
+                <div class="pe-title">Introduction to Many-Facet Rasch Measurement: Analyzing and Evaluating Rater-Mediated Assessments</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span><span class="pet">MFRM</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2018</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '18</span>
+            <div>
+                <div class="pe-title">From the Lab to the Classroom and Back Again: Perspectives on Translation and Interpreting Training</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-book">Proc. '18</span>
+            <div>
+                <div class="pe-title">Construct definition for English/Chinese interpreter certification performance testing: An interactionalist approach</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Chapter</span><span class="pet">Certification</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">SEE '18</span>
+            <div>
+                <div class="pe-title">A longitudinal quantitative investigation into the concurrent validity of self and peer assessment applied to English-Chinese bi-directional interpretation in an undergraduate interpreting course</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Self/Peer Assessment</span><span class="pet">Validity</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">AEHE '18</span>
+            <div>
+                <div class="pe-title">Latent trait modelling of rater accuracy in formative peer assessment of English-Chinese consecutive interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Peer Assessment</span><span class="pet">Rasch</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">AEHE '18</span>
+            <div>
+                <div class="pe-title">The accuracy of student self-assessments of English-Chinese bidirectional interpretation: A longitudinal quantitative study</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Riazi, M.</div>
+                <div class="pe-tags"><span class="pet">Self-assessment</span><span class="pet">Accuracy</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-meta">Intp '18</span>
+            <div>
+                <div class="pe-title">Mixed-methods research in interpreting studies: A methodological review (2004–2014)</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Mixed Methods</span><span class="pet">Methodological Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting meta">
+            <span class="venue v-assess">Intp '18</span>
+            <div>
+                <div class="pe-title">Using rating scales to assess interpretation: Practices, problems and prospects</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Rating Scales</span><span class="pet">State-of-the-art Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '18</span>
+            <div>
+                <div class="pe-title">Learner Corpora in Language Testing and Assessment</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta psychometrics">
+            <span class="venue v-book">Review '18</span>
+            <div>
+                <div class="pe-title">Quantitative research methods in translation and interpreting studies</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2017 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2017</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="interpreting meta">
+            <span class="venue v-assess">ALC '17</span>
+            <div>
+                <div class="pe-title">Investigating the effects of speech rate and accent on simultaneous interpretation: A mixed-methods approach</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Riazi, M.</div>
+                <div class="pe-tags"><span class="pet">Simultaneous Interpreting</span><span class="pet">Mixed Methods</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">LANTS '17</span>
+            <div>
+                <div class="pe-title">Using analytic rating scales to assess English–Chinese bi-directional interpreting: A longitudinal Rasch analysis of scale utility and rater behaviour</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Analytic Rubrics</span><span class="pet">Rasch</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2016 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2016</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment meta psychometrics">
+            <span class="venue v-meta">JRDS '16</span>
+            <div>
+                <div class="pe-title">Reporting practices of rater reliability in interpreting research</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Rater Reliability</span><span class="pet">Reporting Practices</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '16</span>
+            <div>
+                <div class="pe-title">Research Methodologies in Translation Studies</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Fu, R.</div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-book">Proc. '16</span>
+            <div>
+                <div class="pe-title">Using many-facet Rasch analysis to examine psychometric properties of a rater-mediated assessment of simultaneous interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">MFRM</span><span class="pet">Book Chapter</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="meta">
+            <span class="venue v-book">Review '16</span>
+            <div>
+                <div class="pe-title">Research Methods in Interpreting: A Practical Resource</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">LAQ '16</span>
+            <div>
+                <div class="pe-title">Investigating score dependability in English/Chinese interpreter certification performance testing: A generalizability theory approach</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">G-Theory</span><span class="pet">Certification</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="interpreting meta">
+            <span class="venue v-assess">Intp '16</span>
+            <div>
+                <div class="pe-title">A survey to profile conference interpreting practice in China</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Survey</span><span class="pet">China</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment meta">
+            <span class="venue v-book">Review '16</span>
+            <div>
+                <div class="pe-title">Assessment issues in language translation and interpreting</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Book Review</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">ITT '16</span>
+            <div>
+                <div class="pe-title">Building the validity foundation for interpreter certification performance testing</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Validity</span><span class="pet">Certification</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="interpreting">
+            <span class="venue v-assess">Forum '16</span>
+            <div>
+                <div class="pe-title">Strategy use in English-to-Chinese simultaneous interpreting: A descriptive-exploratory study</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Chen, S.</div>
+                <div class="pe-tags"><span class="pet">Interpreting Strategies</span><span class="pet">SI</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">Intp '16</span>
+            <div>
+                <div class="pe-title">Test validation in interpreter certification performance testing: An argument-based approach</div>
+                <div class="pe-authors"><strong>Han, C.</strong>, &amp; Slatyer, H.</div>
+                <div class="pe-tags"><span class="pet">Test Validation</span><span class="pet">Certification</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2015 -->
+    <div class="pub-year-block">
+        <div class="year-heading">
+            <span class="year-label">2015</span>
+            <div class="year-line"></div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting">
+            <span class="venue v-assess">IJCLTS '15</span>
+            <div>
+                <div class="pe-title">(Para)linguistic correlates of perceived fluency in English-to-Chinese simultaneous interpretation</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Fluency</span><span class="pet">SI</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="interpreting meta">
+            <span class="venue v-assess">Persp '15</span>
+            <div>
+                <div class="pe-title">Lacunae, myths and legends about conference interpreters: A diary study to explore conference interpreting practice in China</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Diary Study</span><span class="pet">China</span></div>
+            </div>
+        </div>
+
+        <div class="pub-entry" data-tags="assessment interpreting psychometrics">
+            <span class="venue v-assess">Intp '15</span>
+            <div>
+                <div class="pe-title">Investigating rater severity/leniency in interpreter performance testing: A multifaceted Rasch measurement approach</div>
+                <div class="pe-authors"><strong>Han, C.</strong></div>
+                <div class="pe-tags"><span class="pet">Rater Severity</span><span class="pet">MFRM</span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<footer>
+    <p>© 2026 M3T&amp;I + X</p>
+    <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a></p>
+</footer>
+
+<script>
+(function () {
+    var activeTag = null;
+    document.querySelectorAll('.fchip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var tag = chip.dataset.tag;
+            if (activeTag === tag) {
+                activeTag = null;
+                chip.classList.remove('active');
+                document.querySelectorAll('.pub-entry').forEach(function (e) { e.classList.remove('hidden'); });
+            } else {
+                document.querySelectorAll('.fchip').forEach(function (c) { c.classList.remove('active'); });
+                chip.classList.add('active');
+                activeTag = tag;
+                document.querySelectorAll('.pub-entry').forEach(function (e) {
+                    var tags = (e.dataset.tags || '').split(' ');
+                    e.classList.toggle('hidden', tags.indexOf(tag) === -1);
+                });
+                document.querySelectorAll('.pub-year-block').forEach(function (block) {
+                    var visible = Array.from(block.querySelectorAll('.pub-entry')).some(function (e) { return !e.classList.contains('hidden'); });
+                    block.style.display = visible ? '' : 'none';
+                });
+            }
+        });
+    });
+})();
+</script>
+
+
+</body>
+</html>
