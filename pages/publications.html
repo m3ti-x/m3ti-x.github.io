@@ -217,7 +217,13 @@
             .nav-links::-webkit-scrollbar { display: none; }
             .nav-links li { flex: 0 0 auto; }
             .nav-links a { font-size: 0.74rem; }
-            .pubs-hero { padding: 110px 1.1rem 36px; }
+            .pubs-hero {
+                min-height: 188px;
+                padding: 104px 1.1rem 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
             .pubs-hero h1 { font-size: 2rem; }
             .pubs-body { padding: 2rem 0 3.5rem; }
             .container { padding: 0 1.1rem; }
@@ -1144,6 +1150,20 @@
 <script>
 (function () {
     var activeTag = null;
+    var mobileNav = window.matchMedia('(max-width: 768px)');
+
+    function centerActiveNav() {
+        if (!mobileNav.matches) return;
+        var list = document.querySelector('.nav-links');
+        var active = list && (list.querySelector('a.active') || list.querySelector('a[href$="#publication-highlights"]'));
+        if (!list || !active) return;
+        var left = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
+        list.scrollTo({ left: Math.max(0, left), behavior: 'auto' });
+    }
+
+    window.addEventListener('load', centerActiveNav);
+    window.addEventListener('resize', centerActiveNav);
+
     document.querySelectorAll('.fchip').forEach(function (chip) {
         chip.addEventListener('click', function () {
             var tag = chip.dataset.tag;

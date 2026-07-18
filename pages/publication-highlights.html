@@ -92,7 +92,13 @@
             .nav-links::-webkit-scrollbar { display: none; }
             .nav-links li { flex: 0 0 auto; }
             .nav-links a { font-size: 0.74rem; }
-            .page-hero { padding: 110px 1rem 36px; }
+            .page-hero {
+                min-height: 188px;
+                padding: 104px 1rem 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
             .page-hero h1 { font-size: 1.85rem; }
             .page-body { padding: 2rem 0 3.5rem; }
             .container { padding: 0 1.1rem; }
@@ -188,6 +194,22 @@
     <p>© 2026 M3T&amp;I + X</p>
     <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank" rel="noopener noreferrer">An Zhang</a></p>
 </footer>
+
+<script>
+(function () {
+    var mobileNav = window.matchMedia('(max-width: 768px)');
+    function centerActiveNav() {
+        if (!mobileNav.matches) return;
+        var list = document.querySelector('.nav-links');
+        var active = list && list.querySelector('a.active');
+        if (!list || !active) return;
+        var left = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
+        list.scrollTo({ left: Math.max(0, left), behavior: 'auto' });
+    }
+    window.addEventListener('load', centerActiveNav);
+    window.addEventListener('resize', centerActiveNav);
+})();
+</script>
 
 </body>
 </html>

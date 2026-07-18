@@ -94,7 +94,7 @@
             .nav-links::-webkit-scrollbar { display: none; }
             .nav-links li { flex: 0 0 auto; }
             .nav-links a { font-size: 0.74rem; }
-            .event-hero { padding: 110px 1.1rem 38px; }
+            .event-hero { padding: 104px 1.1rem 36px; }
             .event-hero h1 { font-size: 1.8rem; }
             .event-theme { font-size: 0.9rem; }
             .event-meta { gap: 0.55rem 1rem; }
@@ -157,6 +157,22 @@
     <p>© 2026 M3T&amp;I + X</p>
     <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank">An Zhang</a></p>
 </footer>
+
+<script>
+(function () {
+    var mobileNav = window.matchMedia('(max-width: 768px)');
+    function centerActiveNav() {
+        if (!mobileNav.matches) return;
+        var list = document.querySelector('.nav-links');
+        var active = list && list.querySelector('a.active');
+        if (!list || !active) return;
+        var left = active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2;
+        list.scrollTo({ left: Math.max(0, left), behavior: 'auto' });
+    }
+    window.addEventListener('load', centerActiveNav);
+    window.addEventListener('resize', centerActiveNav);
+})();
+</script>
 
 </body>
 </html>
