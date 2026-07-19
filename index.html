@@ -96,6 +96,14 @@
             line-height: 1.15;
             margin-bottom: 0.45rem;
         }
+        .hero-tagline {
+            max-width: 720px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.92rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
         .hero-subtitle {
             font-size: 0.73rem;
             font-weight: 600;
@@ -156,16 +164,6 @@
         }
 
         .bio p { color: #374151; font-size: 0.96rem; margin-bottom: 0.9rem; }
-        .bio .lab-about-name {
-            color: #1e293b;
-            font-size: 1.16rem;
-            margin: 1.15rem 0 0.25rem;
-        }
-        .bio .lab-about-tagline {
-            color: #6d28d9;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-        }
         .hl {
             display: inline-block;
             background: #f5f3ff;
@@ -179,7 +177,7 @@
         .ri-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-auto-rows: 1fr;
+            grid-auto-rows: auto;
             gap: 1rem;
             margin-top: 1.6rem;
         }
@@ -187,33 +185,38 @@
             --ri-accent: #6d28d9;
             --ri-soft: #f5f3ff;
             display: grid;
-            grid-template-columns: 42px minmax(0, 1fr);
-            grid-template-rows: auto 1fr;
-            column-gap: 1rem;
+            grid-template-columns: 36px minmax(0, 1fr);
+            grid-template-rows: auto auto auto;
+            column-gap: 0.75rem;
+            row-gap: 0.65rem;
             align-items: start;
+            align-content: start;
             background: #fff;
             border: 1px solid #e9e3f8;
             border-top: 3px solid var(--ri-accent);
             border-radius: 8px;
-            padding: 1.2rem;
+            padding: 1.1rem;
             transition: transform 0.2s, box-shadow 0.2s;
+            color: inherit;
+            text-decoration: none;
         }
         .ri-card:nth-child(2) { --ri-accent: #0f766e; --ri-soft: #f0fdfa; }
         .ri-card:nth-child(3) { --ri-accent: #b45309; --ri-soft: #fffbeb; }
         .ri-card:nth-child(4) { --ri-accent: #2563eb; --ri-soft: #eff6ff; }
-        .ri-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,59,0.09); }
+        .ri-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,41,59,0.09); text-decoration: none; }
+        .ri-card:focus-visible { outline: 3px solid rgba(124,58,237,0.28); outline-offset: 3px; }
         .ri-icon {
-            grid-row: 1 / 3;
-            width: 42px; height: 42px;
+            grid-row: 1;
+            width: 36px; height: 36px;
             background: var(--ri-soft);
             border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.05rem;
             color: var(--ri-accent);
         }
-        .ri-card h4 { font-size: 0.96rem; font-weight: 700; color: #1e293b; margin-bottom: 0.42rem; line-height: 1.35; }
-        .ri-card p { font-size: 0.82rem; color: #64748b; line-height: 1.65; margin: 0; }
-        .ri-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .ri-card h4 { align-self: center; color: #1e293b; font-size: 0.96rem; font-weight: 700; line-height: 1.35; }
+        .ri-card p { grid-column: 1 / -1; margin: 0; color: #64748b; font-size: 0.82rem; line-height: 1.65; }
+        .ri-tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0; }
         .ri-tag {
             font-size: 0.7rem;
             padding: 0.13rem 0.52rem;
@@ -301,33 +304,66 @@
         .earlier-updates[open] summary span { display: none; }
         .news-list-compact { margin-top: 0.75rem; }
 
+        #publication-highlights {
+            width: calc(100% + 2.5rem);
+            margin-left: -1.25rem;
+        }
         .pub-highlight-grid {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.1rem;
             margin-top: 1.6rem;
         }
         .pub-highlight-card {
-            background: transparent;
-            border-top: 1px solid #e9e3f8;
-            padding: 0.95rem 0;
-        }
-        .pub-highlight-card:last-child { border-bottom: 1px solid #e9e3f8; }
-        .pub-highlight-card h3 {
-            color: #1e293b;
-            font-size: 0.96rem;
-            line-height: 1.45;
-            margin: 0;
-            transition: color 0.18s;
-        }
-        .pub-highlight-card h3 a {
             display: flex;
-            align-items: center;
+            min-width: 0;
+            min-height: 100%;
             color: inherit;
+            background: #fff;
+            border: 1px solid #e9e3f8;
+            border-radius: 14px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .pub-highlight-card:hover {
+            border-color: #c4b5fd;
+            box-shadow: 0 10px 28px rgba(30,41,59,0.1);
+            transform: translateY(-3px);
             text-decoration: none;
         }
+        .pub-highlight-card:focus-visible { outline: 3px solid rgba(124,58,237,0.28); outline-offset: 3px; }
+        .pub-highlight-card-inner { display: flex; flex: 1; min-width: 0; flex-direction: column; }
+        .pub-highlight-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 2.3 / 1;
+            padding: 1.4rem;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+        }
+        .pub-highlight-card:nth-child(2) .pub-highlight-visual { background: linear-gradient(135deg, #065f46 0%, #059669 100%); }
+        .pub-highlight-card:nth-child(3) .pub-highlight-visual { background: linear-gradient(135deg, #6b1d6d 0%, #7c3aed 100%); }
+        .pub-highlight-card:nth-child(4) .pub-highlight-visual { background: linear-gradient(135deg, #164e63 0%, #0284c7 100%); }
+        .pub-highlight-label {
+            max-width: 340px;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+        .pub-highlight-content { display: flex; flex: 1; min-height: 112px; flex-direction: column; padding: 1rem 1.1rem; }
+        .pub-highlight-card h3 {
+            color: #1e293b;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            margin: 0 0 0.55rem;
+            transition: color 0.18s;
+        }
         .pub-highlight-card:hover h3 { color: #6d28d9; }
-        .pub-highlight-excerpt { color: #64748b; font-size: 0.82rem; line-height: 1.62; margin: 0.42rem 0 0.45rem; }
-        .pub-highlight-more { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.74rem; font-weight: 600; }
+        .pub-highlight-meta { color: #64748b; font-size: 0.75rem; line-height: 1.5; }
         .team-overview-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -474,9 +510,10 @@
             .container { padding: 0 1.15rem; }
             .section { margin-bottom: 3rem; }
             .ri-grid { grid-template-columns: 1fr 1fr; }
+            #publication-highlights { width: auto; margin-left: 0; }
             .ri-card {
                 grid-template-columns: 28px minmax(0, 1fr);
-                grid-template-rows: auto auto;
+                grid-template-rows: auto auto auto;
                 column-gap: 0.65rem;
                 row-gap: 0.55rem;
                 padding: 1.05rem 1.1rem;
@@ -489,7 +526,7 @@
                 font-size: 0.76rem;
             }
             .ri-card h4 { align-self: center; margin-bottom: 0; }
-            .ri-card p { grid-column: 1 / -1; }
+            .ri-card p, .ri-card .ri-tags { grid-column: 1 / -1; }
             .team-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-director-card { grid-column: 1 / -1; }
             .news-item { flex-direction: column; gap: 0.6rem; }
@@ -498,14 +535,20 @@
             .hero-buttons { justify-content: center; }
             .hero-photo img, .photo-fallback { width: 145px; height: 145px; }
             .hero-text h1 { font-size: 2.1rem; }
+            .hero-tagline { max-width: 620px; font-size: 0.86rem; }
             .recruit-box { padding: 1.25rem; }
         }
         @media (max-width: 480px) {
             .ri-grid { grid-template-columns: 1fr; }
+            .pub-highlight-grid { grid-template-columns: 1fr; }
+            .pub-highlight-visual { padding: 1.2rem; }
+            .pub-highlight-label { font-size: 1.08rem; }
+            .pub-highlight-content { min-height: 118px; }
             .team-overview-grid { grid-template-columns: 1fr; }
             .team-director-card { grid-column: auto; }
             .hero { padding-top: 108px; }
             .hero-text h1 { font-size: 2rem; }
+            .hero-tagline { font-size: 0.82rem; line-height: 1.55; }
             .hero-inner, .container { padding-left: 0.95rem; padding-right: 0.95rem; }
             .lab-badge { max-width: 100%; font-size: 0.72rem; }
             .section-title { font-size: 1.35rem; }
@@ -519,7 +562,7 @@
 <body>
 
 <nav>
-    <a href="#home" class="nav-name" style="text-decoration:none;">M³T&amp;I + X</a>
+    <a href="#home" class="nav-name" style="text-decoration:none;">M³T&amp;I + X Lab</a>
     <ul class="nav-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#research">Research Directions</a></li>
@@ -533,6 +576,7 @@
     <div class="hero-inner lab-hero-inner">
         <div class="hero-text">
             <h1>M³T&amp;I + X Lab</h1>
+            <p class="hero-tagline">Exploring the substantive and methodological frontiers of<br>Multilingual, Multimodal, and Multiagent Translation and Interpreting</p>
         </div>
     </div>
 </section>
@@ -548,12 +592,8 @@
 
     <section class="section bio" id="biography">
         <h2 class="section-title">About the Lab</h2>
-        <h3 class="lab-about-name">M³T&amp;I + X Lab</h3>
-        <p class="lab-about-tagline">
-            Exploring the substantive and methodological frontiers of Multilingual, Multimodal, and Multiagent Translation and Interpreting
-        </p>
         <p>
-            The M³T&amp;I + X Lab is an interdisciplinary and closely connected research team working at the intersection of human and machine translation, applied linguistics, natural language processing, and emerging language technologies.
+            The M³T&amp;I + X Lab is an interdisciplinary research team working at the intersection of human and machine translation, applied linguistics, natural language processing, and emerging language technologies.
         </p>
         <p>
             M³T&amp;I stands for Multilingual, Multimodal, and Multiagent Translation and Interpreting. It conceptualizes translation and interpreting (T&amp;I) as complex, technology-mediated, and socially situated forms of multilingual communication. The framework examines how communication is produced, mediated, evaluated, and received across multiple languages, communicative modes, and human and machine agents.
@@ -567,26 +607,30 @@
     <section class="section" id="research">
         <h2 class="section-title">Research Directions</h2>
         <div class="ri-grid">
-            <div class="ri-card">
+            <a class="ri-card" href="pages/evaluation-reception.html">
                 <div class="ri-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                 <h4>Evaluation and Reception</h4>
                 <p>Developing and applying human, automated, and human-AI approaches to evaluate translation and interpretation produced by both humans and machines in various contexts, while examining how these outputs are perceived, understood, trusted, and used by diverse audiences.</p>
-            </div>
-            <div class="ri-card">
+                <div class="ri-tags"><span class="ri-tag">Human evaluation</span><span class="ri-tag">Audience reception</span><span class="ri-tag">Automated evaluation</span><span class="ri-tag">Social simulation</span></div>
+            </a>
+            <a class="ri-card" href="pages/intelligent-teaching-learning.html">
                 <div class="ri-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                 <h4>Intelligent Teaching and Learning</h4>
                 <p>Advancing and reimagining translation and interpreting education through the principled integration of generative artificial intelligence, intelligent assessment, and emerging language technologies into teaching, learning, feedback, and professional training.</p>
-            </div>
-            <div class="ri-card">
+                <div class="ri-tags"><span class="ri-tag">Technology-supported pedagogy</span><span class="ri-tag">Human-AI collaboration</span><span class="ri-tag">Automated feedback</span></div>
+            </a>
+            <a class="ri-card" href="pages/cognitive-modelling.html">
                 <div class="ri-icon"><i class="fa-solid fa-brain"></i></div>
                 <h4>Cognitive Modelling</h4>
                 <p>Investigating and modelling the cognitive processes underlying AI-mediated translation, interpreting, and assessment through methods such as eye-tracking, think-aloud protocols, keystroke logging, and other process-tracing techniques.</p>
-            </div>
-            <div class="ri-card">
+                <div class="ri-tags"><span class="ri-tag">Information processing</span><span class="ri-tag">Process tracing</span><span class="ri-tag">Process mining</span><span class="ri-tag">Human-AI interaction</span></div>
+            </a>
+            <a class="ri-card" href="pages/meta-research.html">
                 <div class="ri-icon"><i class="fa-solid fa-chart-line"></i></div>
                 <h4>Meta-research</h4>
                 <p>Synthesizing and critically evaluating research on human and machine translation and interpreting through systematic reviews, meta-analyses, evidence mapping, and other forms of research-on-research.</p>
-            </div>
+                <div class="ri-tags"><span class="ri-tag">Scoping review</span><span class="ri-tag">systematic review</span><span class="ri-tag">meta-analysis</span><span class="ri-tag">evidence mapping</span></div>
+            </a>
         </div>
     </section>
 
@@ -597,7 +641,7 @@
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">AUG 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-people">People</span></div>
                     <h4><a href="pages/team.html#xiaoxi-sun">Xiaoxi Sun begins her PhD journey at NUS</a></h4>
-                    <p>Xiaoxi Sun has joined the Department of Chinese Studies at NUS as a PhD student. Her research focuses on optimizing the human evaluation of machine translation.</p>
+                    <p>Xiaoxi Sun has joined the Department of Chinese Studies at NUS as a PhD researcher. Her research focuses on optimizing the human evaluation of machine translation.</p>
                 </div>
             </article>
             <article class="news-item type-publication">
@@ -617,8 +661,8 @@
             <article class="news-item type-event">
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">MAY 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-event">Event</span></div>
-                    <h4><a href="pages/symposium-2026.html">The 2nd NUS Symposium on T&amp;I Evaluation</a></h4>
-                    <p>The symposium was successfully held at NUS on 21–22 May 2026.</p>
+                    <h4><a href="pages/symposium-2026.html">The 2nd NUS Symposium on Translation and Interpreting Evaluation</a></h4>
+                    <p>中文系于2026年5月21日至22日成功举办学术研讨会。</p>
                 </div>
             </article>
         </div>
@@ -684,26 +728,42 @@
     <section class="section" id="publication-highlights">
         <h2 class="section-title">Publication Highlights</h2>
         <div class="pub-highlight-grid">
-            <article class="pub-highlight-card">
-                <h3><a href="pages/publication-highlights.html#zero-shot-evaluators">Can large language models evaluate interpreting as reliably as humans?</a></h3>
-                <p class="pub-highlight-excerpt">In this study, we conducted one of the first large-scale examinations of large language models as zero-shot evaluators of spoken-language interpreting. Using 541 pre-scored English–Chinese consecutive and simultaneous interpretations from the Interpreting Quality Evaluation Corpus, we compared GPT-4o and DeepSeek-R1 with trained human raters across three dimensions: scoring reliability, severity, and validity.</p>
-                <a class="pub-highlight-more" href="pages/publication-highlights.html#zero-shot-evaluators">Read full highlight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            </article>
-            <article class="pub-highlight-card">
-                <h3><a href="pages/publication-highlights.html#ai-evaluation-review">How ready is AI to evaluate human translation and interpreting?</a></h3>
-                <p class="pub-highlight-excerpt">As artificial intelligence becomes increasingly capable of assessing complex language performance, we asked a critical question: How robust, valid, and transparent are current AI-based approaches to evaluating human translation and interpreting?</p>
-                <a class="pub-highlight-more" href="pages/publication-highlights.html#ai-evaluation-review">Read full highlight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            </article>
-            <article class="pub-highlight-card">
-                <h3><a href="pages/publication-highlights.html#interpreting-rubrics">What makes an effective rubric for assessing interpreting?</a></h3>
-                <p class="pub-highlight-excerpt">Rubrics are widely used in interpreter education, professional certification, and research, yet their development and effectiveness have rarely been examined systematically. In this study, we conducted the first large-scale systematic review and meta-analysis of rubric-based interpreting assessment, investigating how rubrics are developed, designed, applied, and validated.</p>
-                <a class="pub-highlight-more" href="pages/publication-highlights.html#interpreting-rubrics">Read full highlight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            </article>
-            <article class="pub-highlight-card">
-                <h3><a href="pages/publication-highlights.html#adaptive-si-learning">Can adaptive technology make simultaneous interpreting easier to learn?</a></h3>
-                <p class="pub-highlight-excerpt">Simultaneous interpreting places exceptional cognitive and emotional demands on beginners, who must comprehend, reformulate, and produce speech almost concurrently. In this study, we investigated whether computerized dynamic assessment (CDA) could support learners precisely when these processing difficulties arose.</p>
-                <a class="pub-highlight-more" href="pages/publication-highlights.html#adaptive-si-learning">Read full highlight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            </article>
+            <a class="pub-highlight-card" href="pages/highlight-adaptive-si-learning.html">
+                <article class="pub-highlight-card-inner">
+                    <div class="pub-highlight-visual"><span class="pub-highlight-label">Computerized dynamic assessment</span></div>
+                    <div class="pub-highlight-content">
+                        <h3>Can adaptive technology make simultaneous interpreting easier to learn?</h3>
+                        <p class="pub-highlight-meta">Jiang · <em>Language Learning &amp; Technology</em> · 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a class="pub-highlight-card" href="pages/highlight-zero-shot-evaluators.html">
+                <article class="pub-highlight-card-inner">
+                    <div class="pub-highlight-visual"><span class="pub-highlight-label">LLM as a zero-shot evaluator</span></div>
+                    <div class="pub-highlight-content">
+                        <h3>Can large language models evaluate interpreting as reliably as humans?</h3>
+                        <p class="pub-highlight-meta">Han &amp; Lu · <em>Language Testing</em> · 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a class="pub-highlight-card" href="pages/highlight-ai-evaluation-review.html">
+                <article class="pub-highlight-card-inner">
+                    <div class="pub-highlight-visual"><span class="pub-highlight-label">Automatic evaluation of human T&amp;I</span></div>
+                    <div class="pub-highlight-content">
+                        <h3>How ready is AI to evaluate human translation and interpreting?</h3>
+                        <p class="pub-highlight-meta">Han · <em>Research Methods in Applied Linguistics</em> · 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a class="pub-highlight-card" href="pages/highlight-interpreting-rubrics.html">
+                <article class="pub-highlight-card-inner">
+                    <div class="pub-highlight-visual"><span class="pub-highlight-label">Rubrics in rater-mediated assessment</span></div>
+                    <div class="pub-highlight-content">
+                        <h3>What makes an effective rubric for assessing interpreting?</h3>
+                        <p class="pub-highlight-meta">Han, Jiang &amp; Chen · <em>Language Testing</em> · 2026</p>
+                    </div>
+                </article>
+            </a>
         </div>
     </section>
 
@@ -713,8 +773,8 @@
             <article class="team-director-card">
                 <div class="team-overview-name"><a href="pages/team.html#chao-han">Chao Han</a></div>
                 <div class="team-overview-role">Lab Director</div>
-                <div class="team-overview-affil">Department of Chinese Studies, National University of Singapore</div>
-                <p class="team-overview-bio">Dr. Han is an interdisciplinary-minded applied linguist whose work integrates psychometric modeling, cognitive process tracing, and natural language processing to advance manual and automated evaluation and reception of translation and interpreting. Over the years, he has developed a robust and programmatic research agenda, termed Quality Assessment in Multilingual, Multimodal, and Multiagent Translation and Interpreting (QAM³T&amp;I, see Han, 2025). His recent work has been published in leading peer-reviewed journals including <em>Interpreting</em>, <em>Target</em>, <em>Language Testing</em>, <em>Language Assessment Quarterly</em>, and <em>Computer Assisted Language Learning</em>. Dr. Han currently serves as an Associate Editor for <em>Language Testing in Asia</em> (Springer Nature) and sits on the Editorial/Advisory Board of <em>Language Testing</em> (Sage) and <em>Interpreting: International Journal of Research and Practice in Interpreting</em> (John Benjamins).</p>
+                <div class="team-overview-affil">National University of Singapore, Singapore</div>
+                <p class="team-overview-bio">Dr. Han is an interdisciplinary-minded applied linguist whose work integrates psychometric modeling, cognitive process tracing, and natural language processing to advance manual and automated evaluation and reception of translation and interpreting. Over the years, he has developed a robust and programmatic research agenda, termed <em>Quality Assessment in Multilingual, Multimodal, and Multiagent Translation and Interpreting</em> (QAM³T&amp;I). His recent work has been published in leading peer-reviewed journals including <em>Interpreting</em>, <em>Target</em>, <em>Language Testing</em>, <em>Language Assessment Quarterly</em>, and <em>Computer Assisted Language Learning</em>. Dr. Han currently serves as an Associate Editor for <em>Language Testing in Asia</em> (Springer Nature) and sits on the Editorial/Advisory Board of <em>Language Testing</em> (Sage) and <em>Interpreting: International Journal of Research and Practice in Interpreting</em> (John Benjamins).</p>
                 <div class="team-overview-links">
                     <a href="https://discovery.nus.edu.sg/25035-chao-han/about" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-user"></i> NUS Discovery</a>
                     <a href="https://orcid.org/0000-0002-6712-0555" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid"></i> ORCID</a>
@@ -729,32 +789,32 @@
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#shirong-chen">Shirong Chen</a></div>
                 <div class="team-overview-role">Lecturer</div>
-                <div class="team-overview-affil">University of International Business and Economics, Beijing, China</div>
+                <div class="team-overview-affil">University of International Business and Economics, China</div>
             </article>
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#mengting-jiang">Mengting Jiang</a></div>
-                <div class="team-overview-role">PhD Student</div>
+                <div class="team-overview-role">PhD Researcher</div>
                 <div class="team-overview-affil">Xiamen University, China</div>
             </article>
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#yuhan-kang">Yuhan Kang</a></div>
-                <div class="team-overview-role">PhD Student</div>
-                <div class="team-overview-affil">Xiamen University</div>
+                <div class="team-overview-role">PhD Researcher</div>
+                <div class="team-overview-affil">Xiamen University, China</div>
             </article>
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#qionglu-chen">Qionglu Chen</a></div>
-                <div class="team-overview-role">PhD Student</div>
-                <div class="team-overview-affil">Xiamen University</div>
+                <div class="team-overview-role">PhD Researcher</div>
+                <div class="team-overview-affil">Xiamen University, China</div>
             </article>
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#zhaokun-jiang">Zhaokun Jiang</a></div>
-                <div class="team-overview-role">PhD Student</div>
-                <div class="team-overview-affil">National University of Singapore</div>
+                <div class="team-overview-role">PhD Researcher</div>
+                <div class="team-overview-affil">National University of Singapore, Singapore</div>
             </article>
             <article class="team-overview-card">
                 <div class="team-overview-name"><a href="pages/team.html#xiaoxi-sun">Xiaoxi Sun</a></div>
-                <div class="team-overview-role">PhD Student</div>
-                <div class="team-overview-affil">National University of Singapore</div>
+                <div class="team-overview-role">PhD Researcher</div>
+                <div class="team-overview-affil">National University of Singapore, Singapore</div>
             </article>
         </div>
         <div class="team-overview-footer">

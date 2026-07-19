@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 2nd NUS Symposium on T&amp;I Evaluation | M³T&amp;I + X</title>
+    <title>The 2nd NUS Symposium on Translation and Interpreting Evaluation | M³T&amp;I + X</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -49,7 +49,6 @@
             text-align: center;
         }
         .event-hero-inner { max-width: 920px; margin: 0 auto; }
-        .event-kicker { color: #c4b5fd; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.8rem; }
         .event-hero h1 { color: #fff; font-size: 2.35rem; line-height: 1.25; margin-bottom: 0.8rem; }
         .event-theme { max-width: 760px; margin: 0 auto 1.1rem; color: rgba(255,255,255,0.74); font-size: 0.96rem; line-height: 1.6; }
         .event-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem 1.5rem; color: rgba(255,255,255,0.82); font-size: 0.84rem; }
@@ -64,6 +63,50 @@
         .section-title::after { content: ''; display: block; width: 38px; height: 3px; margin-top: 0.4rem; background: linear-gradient(90deg, #7c3aed, #c084fc); border-radius: 2px; }
 
         .overview-copy p { color: #4b5563; font-size: 0.92rem; margin-bottom: 0.9rem; }
+
+        .event-photo {
+            margin: 1.4rem 0 0;
+        }
+        .event-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+        .event-photo figcaption {
+            margin-top: 0.55rem;
+            color: #94a3b8;
+            font-size: 0.76rem;
+        }
+
+        .speaker-list {
+            padding-left: 1.25rem;
+            color: #4b5563;
+            list-style: disc;
+        }
+        .speaker-list li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .speaker-list li::marker { color: #7c3aed; }
+
+        main[lang="zh-CN"] { font-family: "PingFang SC", "Microsoft YaHei", 'Inter', sans-serif; }
+
+        .program-copy { margin-bottom: 0.8rem; color: #4b5563; font-size: 0.92rem; }
+        .program-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.58rem 0.82rem;
+            color: #6d28d9;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: #fff;
+            border: 1px solid #ddd6fe;
+            border-radius: 6px;
+        }
+        .program-link:hover { color: #5b21b6; text-decoration: none; border-color: #a78bfa; }
 
         .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; }
 
@@ -124,7 +167,7 @@
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-name" style="text-decoration:none;">M³T&amp;I + X</a>
+    <a href="../index.html" class="nav-name" style="text-decoration:none;">M³T&amp;I + X Lab</a>
     <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#research">Research Directions</a></li>
@@ -136,12 +179,11 @@
 
 <header class="event-hero">
     <div class="event-hero-inner">
-        <div class="event-kicker">Event Report</div>
-        <h1>The 2nd NUS Symposium on T&amp;I Evaluation</h1>
+        <h1>The 2nd NUS Symposium on Translation and Interpreting Evaluation</h1>
         <p class="event-theme"><em>Advancing translation and interpreting quality assessment: Past lessons, transferrable insights, and future directions</em></p>
         <div class="event-meta">
-            <span><i class="fa-regular fa-calendar"></i> 21-22 May 2026</span>
-            <span><i class="fa-solid fa-location-dot"></i> National University of Singapore</span>
+            <span><i class="fa-regular fa-calendar"></i> 2026年5月21日至22日</span>
+            <span><i class="fa-solid fa-location-dot"></i> 新加坡国立大学</span>
         </div>
     </div>
 </header>
@@ -152,13 +194,42 @@
     </svg>
 </div>
 
-<main class="page-body">
+<main class="page-body" lang="zh-CN">
     <div class="container">
         <section class="section">
-            <h2 class="section-title">Event Overview</h2>
+            <h2 class="section-title">活动概况</h2>
             <div class="overview-copy">
-                <p>The symposium was successfully held at the National University of Singapore on 21–22 May 2026. Under the theme <em>Advancing translation and interpreting quality assessment: Past lessons, transferrable insights, and future directions</em>, the two-day event brought together scholars to exchange ideas on recent developments and future directions in translation and interpreting quality assessment.</p>
+                <p>中文系于2026年5月21日至22日成功举办The 2nd NUS Symposium on Translation and Interpreting Evaluation，研讨主题为 “Advancing translation and interpreting quality assessment: Past lessons, transferrable insights, and future directions” 学术研讨会。本次会议由韩潮老师(Han Chao, A/P)担任学术召集人。会议聚焦多语言、多模态、多智能体背景下的口笔译质量评估研究（Quality Assessment in Multilingual, Multimodal, and Multiagent Translation and Interpreting/QAM3T&amp;I），与会专家学者就语言测试与口笔译评估领域的最新研究成果展开了深入探讨。</p>
             </div>
+            <figure class="event-photo">
+                <img src="symposium-2026-group.jpeg" alt="The 2nd NUS Symposium on Translation and Interpreting Evaluation参会人员合影">
+                <figcaption>The 2nd NUS Symposium on Translation and Interpreting Evaluation参会人员合影</figcaption>
+            </figure>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">特邀报告人</h2>
+            <ul class="speaker-list">
+                <li>香港浸会大学刘敏华教授</li>
+                <li>美国伊利诺伊大学香槟分校语言学系闫逊教授</li>
+                <li>广东外语外贸大学高级翻译学院陈思佳副教授</li>
+                <li>西安交通大学外国语学院蒋新蕾副教授</li>
+                <li>北京外国语大学高级翻译学院刘宇波副教授</li>
+                <li>厦门大学外文学院陆晓蕾副教授</li>
+                <li>新加坡国立大学中文系韩潮副教授</li>
+                <li>英国赫瑞-瓦特大学语言与跨文化研究学院王小曼助理教授（线上参会）</li>
+                <li>对外经济贸易大学英语学院陈世荣博士</li>
+                <li>美国伊利诺伊大学香槟分校语言学系博士生Rebecca Yeager（线上参会）</li>
+                <li>厦门大学外文学院博士生蒋梦婷、康钰晗、陈琼璐</li>
+                <li>澳门理工大学语言与翻译学院博士生蒋李俐</li>
+                <li>新加坡国立大学中文系博士生姜兆坤</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">会议日程</h2>
+            <p class="program-copy">点击下方链接查看会议完整日程、报告题目、摘要及报告人信息。</p>
+            <a class="program-link" href="symposium-2026-program.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> 查看会议日程（PDF）</a>
         </section>
 
         <a class="back-link" href="../index.html#news"><i class="fa-solid fa-arrow-left"></i> Back to News &amp; Updates</a>
