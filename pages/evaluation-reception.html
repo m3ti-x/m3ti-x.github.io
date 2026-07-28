@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="research-direction.css?v=20260719">
+    <link rel="stylesheet" href="research-direction.css?v=20260728">
+    <link rel="stylesheet" href="../site-nav.css?v=20260728-3">
 </head>
 <body>
 
@@ -16,8 +17,29 @@
     <a href="../index.html" class="nav-name">M³T&amp;I + X Lab</a>
     <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../index.html#research" class="active">Research Directions</a></li>
-        <li><a href="../index.html#news">News &amp; Updates</a></li>
+        <li class="nav-item nav-has-submenu">
+            <div class="nav-primary">
+                <a href="../index.html#research" class="active">Research Directions</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open Research Directions menu" aria-expanded="false" aria-controls="research-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="research-submenu">
+                <li><a class="submenu-current" href="evaluation-reception.html">Evaluation and Reception</a></li>
+                <li><a href="intelligent-teaching-learning.html">Intelligent Teaching and Learning</a></li>
+                <li><a href="cognitive-modelling.html">Cognitive Modelling</a></li>
+                <li><a href="meta-research.html">Meta-research</a></li>
+            </ul>
+        </li>
+        <li class="nav-item nav-has-submenu nav-item-news">
+            <div class="nav-primary">
+                <a href="../index.html#news">News &amp; Updates</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open News and Updates menu" aria-expanded="false" aria-controls="news-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="news-submenu">
+                <li><a href="../index.html#news-people">People</a></li>
+                <li><a href="../index.html#news-publications">Publication</a></li>
+                <li><a href="../index.html#news-events">Event</a></li>
+            </ul>
+        </li>
         <li><a href="../index.html#publication-highlights">Publication Highlights</a></li>
         <li><a href="../index.html#team">Team</a></li>
     </ul>
@@ -78,5 +100,6 @@
     <p style="margin-top:0.3rem;">Design inspired by <a href="https://anzhang314.github.io/" target="_blank" rel="noopener noreferrer">An Zhang</a></p>
 </footer>
 
+<script src="../site-nav.js?v=20260728-2"></script>
 </body>
 </html>

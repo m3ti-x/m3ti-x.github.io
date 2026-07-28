@@ -70,6 +70,18 @@ nav {
 footer { padding: 2rem; color: #94a3b8; font-size: 0.8rem; text-align: center; border-top: 1px solid #ede9fe; }
 footer a { color: #94a3b8; }
 
+@media (min-width: 1024px) {
+    .highlight-hero { padding-top: 108px; padding-bottom: 44px; }
+    .highlight-hero-inner { max-width: 1180px; }
+    .highlight-hero h1 { max-width: 1120px; font-size: 2.7rem; line-height: 1.25; }
+
+    .page-body { padding-top: 3rem; }
+    .container { max-width: 1120px; padding-right: 2rem; padding-left: 2rem; }
+    .publication-citation { font-size: 0.92rem; line-height: 1.72; }
+    .highlight-copy p { font-size: 1.04rem; line-height: 1.85; }
+    .back-link { font-size: 0.92rem; }
+}
+
 @media (max-width: 768px) {
     nav {
         display: block;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M³T&amp;I + X | Translation &amp; Interpreting Research Lab</title>
+    <title>M³T&amp;I + X</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -551,7 +551,7 @@
             .team-director-card { grid-column: auto; }
             .hero { padding-top: 108px; }
             .hero-text h1 { font-size: 2rem; }
-            .hero-tagline { font-size: 0.88rem; line-height: 1.55; }
+            .hero-tagline { font-size: 0.88rem; line-height: 1.55; text-wrap: balance; }
             .hero-inner, .container { padding-left: 0.95rem; padding-right: 0.95rem; }
             .lab-badge { max-width: 100%; font-size: 0.72rem; }
             .section-title { font-size: 1.35rem; }
@@ -561,6 +561,7 @@
             footer { padding: 1.5rem 1rem; }
         }
     </style>
+    <link rel="stylesheet" href="site-nav.css?v=20260728-3">
 </head>
 <body>
 
@@ -568,8 +569,29 @@
     <a href="#home" class="nav-name" style="text-decoration:none;">M³T&amp;I + X Lab</a>
     <ul class="nav-links">
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#research">Research Directions</a></li>
-        <li><a href="#news">News &amp; Updates</a></li>
+        <li class="nav-item nav-has-submenu">
+            <div class="nav-primary">
+                <a href="#research">Research Directions</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open Research Directions menu" aria-expanded="false" aria-controls="research-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="research-submenu">
+                <li><a href="pages/evaluation-reception.html">Evaluation and Reception</a></li>
+                <li><a href="pages/intelligent-teaching-learning.html">Intelligent Teaching and Learning</a></li>
+                <li><a href="pages/cognitive-modelling.html">Cognitive Modelling</a></li>
+                <li><a href="pages/meta-research.html">Meta-research</a></li>
+            </ul>
+        </li>
+        <li class="nav-item nav-has-submenu nav-item-news">
+            <div class="nav-primary">
+                <a href="#news">News &amp; Updates</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open News and Updates menu" aria-expanded="false" aria-controls="news-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="news-submenu">
+                <li><a href="#news-people">People</a></li>
+                <li><a href="#news-publications">Publication</a></li>
+                <li><a href="#news-events">Event</a></li>
+            </ul>
+        </li>
         <li><a href="#publication-highlights">Publication Highlights</a></li>
         <li><a href="#team">Team</a></li>
     </ul>
@@ -596,7 +618,7 @@
     <section class="section bio" id="biography">
         <h2 class="section-title">About the Lab</h2>
         <p>
-            The M³T&amp;I + X Lab is an interdisciplinary and internationally connected research team advancing work at the intersection of human and machine translation, applied linguistics, natural language processing, and emerging language technologies.
+            The M³T&amp;I + X Lab is a close-knit research team advancing work at the intersection of human and machine translation, applied linguistics, natural language processing, and emerging language technologies.
         </p>
         <p>
             M³T&amp;I stands for <span class="concept-initial">M</span>ultilingual, <span class="concept-initial">M</span>ultimodal, and <span class="concept-initial">M</span>ultiagent <span class="concept-initial">T</span>ranslation and <span class="concept-initial">I</span>nterpreting. It conceptualizes translation and interpreting (T&amp;I) as complex, technology-mediated, and socially situated forms of multilingual communication. The framework examines how communication is produced, mediated, evaluated, and received across multiple languages, communicative modes, and human and machine agents.
@@ -640,14 +662,14 @@
     <section class="section" id="news">
         <h2 class="section-title">News &amp; Updates</h2>
         <div class="news-list">
-            <article class="news-item type-people">
+            <article class="news-item type-people" id="news-people">
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">AUG 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-people">People</span></div>
                     <h4><a href="pages/team.html#xiaoxi-sun">Xiaoxi Sun begins her PhD journey at NUS</a></h4>
                     <p>Xiaoxi Sun has joined the Department of Chinese Studies at NUS as a PhD researcher. Her research focuses on optimizing the human evaluation of machine translation.</p>
                 </div>
             </article>
-            <article class="news-item type-publication">
+            <article class="news-item type-publication" id="news-publications">
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">JUL 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-publication">Publication</span></div>
                     <h4><a href="https://doi.org/10.64152/10125/73701" target="_blank" rel="noopener noreferrer">Scaffolding early-stage simultaneous interpreting learning using computerized dynamic assessment</a></h4>
@@ -661,7 +683,7 @@
                     <p>Han, C., &amp; Lu, X. &middot; <em>Language Testing</em></p>
                 </div>
             </article>
-            <article class="news-item type-event">
+            <article class="news-item type-event" id="news-events">
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">MAY 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-event">Event</span></div>
                     <h4><a href="pages/symposium-2026.html">The 2nd NUS Symposium on Translation and Interpreting Evaluation</a></h4>
@@ -830,8 +852,8 @@
         <div class="recruit-box">
             <p>We are always happy to hear from motivated PhD and Master’s students from different academic backgrounds who are interested in the evaluation and reception of multilingual, multimodal, and multiagent translation and interpreting.</p>
             <p>At the M³T&amp;I + X Lab, you will join a friendly and collaborative research community, receive close mentorship, and have opportunities to connect with wider academic and professional networks.</p>
-            <p>We also warmly welcome visiting PhD students, academics, and research collaborators from around the world who would like to spend time with us, exchange ideas, or develop joint research in the Department of Chinese Studies at the National University of Singapore.</p>
-            <p>Interested in joining or working with us? Please send your CV and a short introduction to your research interests to Dr. Chao Han at <a href="mailto:chaohan@nus.edu.sg">chaohan@nus.edu.sg</a>. We would be delighted to hear from you.</p>
+            <p>We also warmly welcome visiting PhD students, academics, and research collaborators from around the world who would like to spend time with us, exchange ideas, or develop joint research.</p>
+            <p>If you are interested in pursuing PhD studies or visiting the Department of Chinese Studies at the National University of Singapore as a visiting academic, please send your CV and a brief statement of your research interests to Dr. Chao Han at <a href="mailto:chaohan@nus.edu.sg">chaohan@nus.edu.sg</a>. We would be delighted to hear from you.</p>
         </div>
     </section>
 
@@ -867,16 +889,11 @@
 
     function syncActiveNav(hash, behavior) {
         var targetHash = hash || '#home';
-        var links = document.querySelectorAll('.nav-links a[href^="#"]');
-        if (!mobileNav.matches) {
-            links.forEach(function (link) {
-                link.classList.toggle('active', link.getAttribute('href') === '#home');
-            });
-            return;
-        }
+        var activeHash = targetHash.indexOf('#news-') === 0 ? '#news' : targetHash;
+        var links = document.querySelectorAll('.nav-links > li > a[href^="#"], .nav-primary > a[href^="#"]');
         var matched = false;
         links.forEach(function (link) {
-            var isActive = link.getAttribute('href') === targetHash;
+            var isActive = link.getAttribute('href') === activeHash;
             link.classList.toggle('active', isActive);
             matched = matched || isActive;
         });
@@ -936,5 +953,6 @@
 </script>
 
 
+<script src="site-nav.js?v=20260728-2"></script>
 </body>
 </html>

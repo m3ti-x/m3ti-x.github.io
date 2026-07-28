@@ -168,6 +168,25 @@
         footer a { color: #94a3b8; }
         footer a:hover { color: #7c3aed; }
 
+        @media (min-width: 1024px) {
+            .page-hero { padding-top: 108px; padding-bottom: 50px; }
+            .page-hero h1 { font-size: 2.7rem; }
+            .page-hero p { max-width: 760px; font-size: 1.04rem; }
+            .page-body { padding-top: 3rem; }
+            .container { max-width: 1180px; padding-right: 2rem; padding-left: 2rem; }
+            .info-note { font-size: 0.96rem; }
+            .team-group-label { font-size: 0.86rem; }
+            .member-card { padding: 1.7rem 1.8rem; }
+            .member-name { font-size: 1.3rem; }
+            .member-role { font-size: 0.94rem; }
+            .member-affil { font-size: 0.96rem; }
+            .member-section-label { font-size: 0.78rem; }
+            .member-bio { font-size: 1rem; line-height: 1.75; }
+            .member-direction { font-size: 0.98rem; line-height: 1.72; }
+            .member-link { font-size: 0.84rem; }
+            .member-pubs li { font-size: 0.96rem; line-height: 1.68; }
+        }
+
         @media (max-width: 768px) {
             nav {
                 display: block;
@@ -235,6 +254,7 @@
             footer { padding: 1.5rem 1rem; }
         }
     </style>
+    <link rel="stylesheet" href="../site-nav.css?v=20260728-3">
 </head>
 <body>
 
@@ -242,8 +262,29 @@
     <a href="../index.html" class="nav-name" style="text-decoration:none;">M³T&amp;I + X Lab</a>
     <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../index.html#research">Research Directions</a></li>
-        <li><a href="../index.html#news">News &amp; Updates</a></li>
+        <li class="nav-item nav-has-submenu">
+            <div class="nav-primary">
+                <a href="../index.html#research">Research Directions</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open Research Directions menu" aria-expanded="false" aria-controls="research-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="research-submenu">
+                <li><a href="evaluation-reception.html">Evaluation and Reception</a></li>
+                <li><a href="intelligent-teaching-learning.html">Intelligent Teaching and Learning</a></li>
+                <li><a href="cognitive-modelling.html">Cognitive Modelling</a></li>
+                <li><a href="meta-research.html">Meta-research</a></li>
+            </ul>
+        </li>
+        <li class="nav-item nav-has-submenu nav-item-news">
+            <div class="nav-primary">
+                <a href="../index.html#news">News &amp; Updates</a>
+                <button class="nav-submenu-toggle" type="button" aria-label="Open News and Updates menu" aria-expanded="false" aria-controls="news-submenu"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+            </div>
+            <ul class="nav-submenu" id="news-submenu">
+                <li><a href="../index.html#news-people">People</a></li>
+                <li><a href="../index.html#news-publications">Publication</a></li>
+                <li><a href="../index.html#news-events">Event</a></li>
+            </ul>
+        </li>
         <li><a href="../index.html#publication-highlights">Publication Highlights</a></li>
         <li><a href="../index.html#team" class="active">Team</a></li>
     </ul>
@@ -570,5 +611,6 @@
 })();
 </script>
 
+<script src="../site-nav.js?v=20260728-2"></script>
 </body>
 </html>
