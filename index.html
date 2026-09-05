@@ -276,11 +276,28 @@
         .category-people { color: #0f766e; }
         .category-publication { color: #6d28d9; }
         .category-event { color: #b45309; }
+        .news-item.type-call { border-left-color: #2563eb; }
+        .category-call { color: #2563eb; }
         .news-body h4 { font-size: 0.96rem; font-weight: 700; color: #1e293b; line-height: 1.45; margin-bottom: 0.32rem; }
         .news-body h4 a { color: inherit; }
         .news-body h4 a:hover { color: #6d28d9; }
         .news-body p { font-size: 0.82rem; color: #64748b; line-height: 1.6; }
         .news-body p + p { margin-top: 0.4rem; }
+        .news-attachments { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.75rem; }
+        .news-attachment {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.34rem 0.65rem;
+            color: #5b21b6;
+            font-size: 0.76rem;
+            font-weight: 600;
+            line-height: 1.3;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            border-radius: 5px;
+        }
+        .news-attachment:hover { color: #4c1d95; background: #ede9fe; text-decoration: none; }
         .earlier-updates { margin-top: 0.85rem; }
         .earlier-updates summary {
             display: flex;
@@ -678,6 +695,17 @@
     <section class="section" id="news">
         <h2 class="section-title">News &amp; Updates</h2>
         <div class="news-list">
+            <article class="news-item type-call">
+                <div class="news-body">
+                    <div class="news-meta"><span class="news-date-inline">SEP 2026</span><span class="news-meta-sep" aria-hidden="true">&middot;</span><span class="news-category category-call">Call for Abstracts</span></div>
+                    <h4><a href="assets/news/language-testing-floating-special-issue-call.pdf" target="_blank" rel="noopener noreferrer">Call for Abstracts: <em>Language Testing</em> Floating Special Issue on Assessing Translation and Interpreting Practices, Products, and Agents</a></h4>
+                    <p><em>Language Testing</em> invites abstracts for a floating special issue guest edited by Chao Han.</p>
+                    <div class="news-attachments">
+                        <a class="news-attachment" href="assets/news/language-testing-floating-special-issue-call.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> View PDF</a>
+                        <a class="news-attachment" href="assets/news/language-testing-floating-special-issue-call.jpg" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image" aria-hidden="true"></i> View image</a>
+                    </div>
+                </div>
+            </article>
             <article class="news-item type-people" id="news-people">
                 <div class="news-body">
                     <div class="news-meta"><span class="news-date-inline">AUG 2026</span><span class="news-meta-sep" aria-hidden="true">·</span><span class="news-category category-people">People</span></div>
